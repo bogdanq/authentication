@@ -29,8 +29,6 @@ export const signUp = (email, pas, firstName, lastName) => async dispatch => {
   }
 }
 
-
-
 export const signIn = (email, pass) => async dispatch => {
   try {
     dispatch({
@@ -48,11 +46,26 @@ export const signIn = (email, pass) => async dispatch => {
         payload: res.data
     })  
   } catch(e) {
-      console.log(e)
+      console.log('signIn', e)
   }
 }
 
-
 export const logOut = () => {
   cookies.erase('token')
+}
+
+export const getUser = () => async dispatch => {
+  const res = await axios.get('http://localhost:8080/users/current-user', {
+    headers: {'Authorization': cookies.get('token')}
+  })
+  await dispatch({
+    type: types.GET_USER,
+    payload: res.data
+  })
+}
+
+export const getToken = () => {
+  return {
+    type: types.GET_TOKEN
+  }
 }

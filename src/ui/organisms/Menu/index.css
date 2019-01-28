@@ -1,0 +1,45 @@
+
+.header {
+  height: 80px;
+  border-bottom: 1px solid #000;
+  display: flex
+}
+
+.menu {
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid red;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end
+}
+
+.menu a {
+  color: #000;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 50px;
+  margin-bottom: 25px;
+
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 40px 40px #F137A6 inset, 0 0 0 0 #F137A6;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  transition: .15s ease-in-out;
+}
+
+.menu a:hover {
+  box-shadow: 0 0 10px 0 #F137A6 inset, 0 0 10px 4px #F137A6;
+  color: #F137A6;
+}
+
+.active {
+  box-shadow: 0 0 10px 0 #F137A6 inset, 0 0 10px 4px #F137A6 !important;
+  color: #F137A6 !important;
+}

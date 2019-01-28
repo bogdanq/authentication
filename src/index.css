@@ -1,24 +1,7 @@
-.home {
-  height: 500px;
-  border: 1px solid red
-}
-
-.menu {
-  height: 80px;
-  border-bottom: 1px solid #000;
-  text-align: center
-}
-
-.menu a {
-  margin-right: 50px;
-}
-
-.signin {
-  width: 60%;
+.App {
+  width: 1240px;
   margin: 0 auto;
-  padding-top: 80px;
 }
 
-.title {
-  color: green !important
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
