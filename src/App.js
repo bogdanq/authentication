@@ -7,6 +7,8 @@ import propTypes from 'prop-types'
 
 import components from './page'
 import Menu from './ui/organisms/Menu'
+import Search from './ui/organisms/Search'
+
 import PrivateRoute from './helpers/PrivateRoute'
 import QuestRoute from './helpers/QuestRoute'
 
@@ -21,7 +23,10 @@ const { Home, SignIn, SignUp, Private } = components
 class App extends Component {
 
   componentDidUpdate() {  
-    this.props.token && history.push('/')
+    const { token } = this.props
+    if(token !== null) {  
+      history.push('/') 
+    }  
   }
 
   componentDidMount() {
@@ -33,24 +38,24 @@ class App extends Component {
   }
 
   render() {
-    const { actions, token, userList, loadToken, authord } = this.props
-
+    const { token, userList, authord, loadToken } = this.props
+    console.log(loadToken)
     return (
       <div className = { styles.App }>
-      { !loadToken &&  <h1>welcome {userList.firstName}</h1> }
         <Router history = { history }> 
           <Fragment>
-            <Menu token = { token } actions = { actions }/>
+            <Search />
+            <Menu token = { token } userList = { userList }/>
             <Switch>
                 <Route exact path = '/'  component = { Home }/>
-                <Route path = '/signin'  component = { () => <SignIn actions = { actions } /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                <QuestRoute authord = { !authord }  path='/signup' component = { () => <SignUp actions = { actions } /> } />
+                <Route path = '/signin'  component = { () => <SignIn /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                <QuestRoute authord = { !authord }  path='/signup' component = { () => <SignUp /> } />
                 <PrivateRoute token = { token } path='/private' component={Private}/>
                 <PrivateRoute token ={ token } path='/logOut' component={Private}/>
             </Switch>
           </Fragment>
         </Router>
-      </div>
+    </div>
     )
   }
 }
@@ -59,7 +64,7 @@ const  mapStateToProps  = state => ({
   token: state.auth.token,
   userList: state.auth.userList,
   loadToken: state.auth.loadToken,
-  authord: state.auth.authord,
+  authord: state.auth.authord
 })
 
 const  mapDispatchToProps  = dispatch => ({

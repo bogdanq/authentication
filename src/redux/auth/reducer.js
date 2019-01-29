@@ -5,7 +5,8 @@ const initialState = {
   token: Number(cookies.get('token')),
   userList: {},
   loadToken: true,
-  authord: false
+  authord: false,
+  progress: 0
 }
 
 export default function reducer(state = initialState, action) {

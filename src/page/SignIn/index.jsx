@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import propTypes from 'prop-types'
+
+import * as actions from '../../redux/auth/actions'
 
 class SignIn extends Component {
 
@@ -12,6 +16,7 @@ class SignIn extends Component {
   render() {
     const { inputLogin, inputPass } = this.state
     const { actions } = this.props
+    
     return (
       <div className = 'signin'>
         <h1>Пожалуйста войдите</h1>
@@ -35,5 +40,12 @@ SignIn.propTypes = {
   actions: propTypes.object.isRequired
 }
 
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
 
-export default SignIn
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn)

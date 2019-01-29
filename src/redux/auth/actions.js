@@ -54,10 +54,14 @@ export const logOut = () => {
   cookies.erase('token')
 }
 
-export const getUser = () => async dispatch => {
-  const res = await axios.get('http://localhost:8080/users/current-user', {
-    headers: {'Authorization': cookies.get('token')}
-  })
+export const getUser = (res, req) => async dispatch => {
+  let options = {
+    headers: {
+      'Authorization': cookies.get('token')
+    }
+  }
+
+  res = await axios.get('http://localhost:8080/users/current-user', options)
   await dispatch({
     type: types.GET_USER,
     payload: res.data

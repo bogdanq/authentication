@@ -1,0 +1,20 @@
+.nextBtn {
+  display: block;
+  margin: 50px auto;
+  border: none;
+  background: none;
+  outline: none;
+  border: 1px solid rgb(8, 203, 238);
+  height: 40px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.home {
+  display: flex;
+  justify-content: space-between
+}
+
+.summary {
+  width: 60%
+}
