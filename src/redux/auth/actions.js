@@ -2,74 +2,35 @@ import axios from 'axios'
 import cookies from 'browser-cookies'
 
 import * as types from './types'
+import headers from '../../helpers/headers'
 
 const BASE_PATH = 'http://localhost:8080/'
 const USERS = 'users'
+const baseUrl = `${BASE_PATH}${USERS}`
 
-
-export const signUp = (email, pas, firstName, lastName) => async dispatch => {
-  try {
-    dispatch({
-      type: types.SIGN_UP
-    })
-
-    const res = await axios.post(`${BASE_PATH}${USERS}/signup`, {
-      email: email,
-      password: pas,
-      firstName: firstName,
-      lastName: lastName
+export const signUp = (email, pas, firstName, lastName ) => ({
+  type: types.SIGN_UP,
+  promise: axios.post(`${baseUrl}/signup`, {
+    email: email,
+    password: pas,
+    firstName: firstName,
+    lastName: lastName
   })
+})
 
-    dispatch({
-      type: types.SIGN_UP_SUCCESS,
-      payload: res.data
-    }) 
-  } catch(e) {
-      console.log(e)
-  }
-}
-
-export const signIn = (email, pass) => async dispatch => {
-  try {
-    dispatch({
-        type: types.SIGN_IN
-    })
-    
-    const res = await axios.post(`${BASE_PATH}${USERS}/signin`, {
-        email: email,
-        password: pass
-    })
-
-    cookies.set('token', String(res.data.token))        
-    dispatch({
-        type: types.SIGN_IN_SUCCESS,
-        payload: res.data
-    })  
-  } catch(e) {
-      console.log('signIn', e)
-  }
-}
+export const signIn = (email, pass) => ({
+  type: types.SIGN_IN,
+  promise: axios.post(`${baseUrl}/signin`, {
+    email: email,
+    password: pass
+  })
+})
 
 export const logOut = () => {
   cookies.erase('token')
 }
 
-export const getUser = (res, req) => async dispatch => {
-  let options = {
-    headers: {
-      'Authorization': cookies.get('token')
-    }
-  }
-
-  res = await axios.get('http://localhost:8080/users/current-user', options)
-  await dispatch({
-    type: types.GET_USER,
-    payload: res.data
-  })
-}
-
-export const getToken = () => {
-  return {
-    type: types.GET_TOKEN
-  }
-}
+export const getUser = () => ({
+  type: 'GET_USER',
+  promise: axios.get(`${baseUrl}/current-user`, headers)
+})

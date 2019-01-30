@@ -7,5 +7,5 @@ export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
 export const LOG_OUT = 'LOG_OUT'
 
 export const GET_USER = 'GET_USER'
-
-export const GET_TOKEN = 'GET_TOKEN'
+export const GET_USER_SUCCESS = 'GET_USER_SUCCESS'
+export const GET_USER_ERROR = 'GET_USER_ERROR'

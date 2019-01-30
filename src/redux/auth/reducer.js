@@ -1,25 +1,22 @@
-import cookies from 'browser-cookies'
 import * as types from './types'
 
 const initialState = {
-  token: Number(cookies.get('token')),
-  userList: {},
-  loadToken: true,
+  user: {},
   authord: false,
-  progress: 0
+  loading: true
 }
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case types.SIGN_UP: 
       return {
-        ...state
+        ...state,
+        authord: true
       }
 
     case types.SIGN_UP_SUCCESS: 
       return {
-        ...state,
-        authord: true
+        ...state
       }
 
     case types.SIGN_IN: 
@@ -30,28 +27,32 @@ export default function reducer(state = initialState, action) {
     case types.SIGN_IN_SUCCESS: 
       return {
         ...state,
-        userList: action.payload.data,
-        token: action.payload.token,
-        loadToken: false
+        user: action.payload.data
       }
         
     case types.LOG_OUT: 
       return {
-        ...state,
-        token: null             
+        ...state          
       }
 
+    case types.GET_USER_SUCCESS: 
+      return {
+        ...state,
+        user: action.payload,
+        authord: true,
+        loading: false
+      }
     case types.GET_USER: 
       return {
         ...state,
-        userList: action.payload,
-        loadToken: false
+        user: {}
       }
 
-    case types.GET_TOKEN:
+    case types.GET_USER_ERROR: 
       return {
         ...state,
-        token: Number(cookies.get('token'))
+        user: {},
+        loading: false
       }
 
     default: return state
