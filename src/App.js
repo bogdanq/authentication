@@ -21,10 +21,10 @@ import * as actions from './redux/auth/actions'
 
 const history = createBrowserHistory()
 
-const { Home, SignIn, SignUp, Private } = components
-
+const { Home, SignIn, SignUp, Private, SummaryList, PublicProfile } = components
+  
 class App extends Component {
-
+  
   componentDidMount() {
     const { user } = this.props
     if(user) {
@@ -51,6 +51,8 @@ class App extends Component {
                 <QuestRoute authord = { !authord }  path='/signup' component = { () => <SignUp /> } />
                 <AuthRoute user = { !Loadash(user)  } path='/private' component={Private}/>
                 <AuthRoute user = { !Loadash(user)  } path='/logOut' component={Private}/>
+                <Route path='/summary-user/:userID/:date' component={ SummaryList }/>
+                <Route path='/publick' component={ PublicProfile }/>
             </Switch>
           </Fragment>
         </Router>

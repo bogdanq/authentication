@@ -23,7 +23,8 @@
   position: absolute;
   width: 190px;
   text-align: left;
-  background: #fff
+  background: #fff;
+  z-index: 9
 }
 
 .setting ul li {

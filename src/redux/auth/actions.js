@@ -4,7 +4,7 @@ import cookies from 'browser-cookies'
 import * as types from './types'
 import headers from '../../helpers/headers'
 
-const BASE_PATH = 'http://localhost:8080/'
+const BASE_PATH = 'http://localhost:8090/'
 const USERS = 'users'
 const baseUrl = `${BASE_PATH}${USERS}`
 

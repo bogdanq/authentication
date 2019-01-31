@@ -1,7 +1,8 @@
 import * as types from './types'
 
 const initialState = {
-  summarysList: []
+  summarysList: [],
+  userSummary: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -10,6 +11,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         summarysList: action.payload
+      }
+
+    case types.GET_SUMMARY_BY_ID: 
+      return {
+        ...state,
+        userSummary: action.payload
       }
 
       default:  return state

@@ -1,1 +1,2 @@
 export const GET_SUMMARY = 'GET_SUMMARY'
+export const GET_SUMMARY_BY_ID = 'GET_SUMMARY_BY_ID'
