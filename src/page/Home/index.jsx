@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from 'react'
-
+import propType from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Summary from '../../ui/organisms/Summary'
 import Filter from '../../ui/organisms/Filter'
+import Loader from '../../ui/atoms/Loader'
 
 import styles from './index.css'
 import * as actions from '../../redux/summary/actions'
@@ -17,16 +18,20 @@ class Home extends Component {
   }
 
   render() {
-    const { summarysList } = this.props
-    console.log(summarysList)
+    const { loadSummary } = this.props
+    const summarysList = this.props.summarysList.data
+    const { count } = this.props.summarysList
 
     return (
-      <Fragment>
+      loadSummary
+    ? <Loader />
+    : <Fragment>
         <div className = { styles.home }>
           <div className = { styles.filter }>
             <Filter />
           </div>
           <div className = { styles.summary }>
+          <h1>Всего вакансий: { count }</h1>
             {
               summarysList.map((item, id) => 
                 <Summary 
@@ -44,8 +49,19 @@ class Home extends Component {
   }
 }
 
+Home.propType = {
+  summarysList: propType.array,
+  loadSummary: propType.bool
+}
+
+Home.defaultProps = {
+  summarysList: [],
+  loadSummary: true
+}
+
 const mapStateToProps = state => ({
-  summarysList: state.summary.summarysList
+  summarysList: state.summary.summarysList,
+  loadSummary: state.summary.loadSummary
 })
 
 const mapDispatchToProps = dispatch => ({

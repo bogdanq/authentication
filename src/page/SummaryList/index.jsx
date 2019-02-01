@@ -6,6 +6,7 @@ import propTypes from 'prop-types'
 import * as actions from '../../redux/summary/actions'
 
 import UserSummary from '../../ui/molecules/UserSummary'
+import Loader from '../../ui/atoms/Loader'
 
 class SummaryList extends Component {
 
@@ -16,22 +17,27 @@ class SummaryList extends Component {
   }
 
   render() {    
-    const { userSummary } = this.props
+    const { userSummary, isLoadUser } = this.props
 
     return (
-      <div className = 'SummaryList'>
-      {
-        userSummary.map(item =>
-          <UserSummary 
-            key = { item._id }
-            title = { item.title }
-            description = { item.description }
-            history = { item.history }
-            tags = { item.tags }/>
-        )
-      }
-        
-        
+      isLoadUser
+    ? <Loader />
+    :<div className = 'SummaryList'>
+        {
+          userSummary.map((item, id) =>
+            <UserSummary 
+              key = { id }
+              title = { item.title }
+              description = { item.description }
+              history = { item.history }
+              tags = { item.tags }
+              education = { item.education }
+              language = { item.language }
+              phone = { item.phone }
+              userEmail = { item.userEmail }
+              />
+          )
+        }        
       </div>
     )
   } 
@@ -39,15 +45,18 @@ class SummaryList extends Component {
 
 SummaryList.propTypes = {
   match: propTypes.object.isRequired,
-  userSummary: propTypes.array
+  userSummary: propTypes.array,
+  isLoadUser: propTypes.bool
 }
 
-propTypes.default = {
-  userSummary: []
+SummaryList.defaultProps = {
+  userSummary: [],
+  isLoadUser: false
 }
 
 const mapStateToProps = state => ({
-  userSummary: state.summary.userSummary
+  userSummary: state.summary.userSummary,
+  isLoadUser: state.summary.isLoadUser,
 })
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)

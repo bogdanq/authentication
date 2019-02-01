@@ -13,7 +13,7 @@ function Summary({ user, date, title, description, email }) {
       <h2>{ title }</h2>
       <h3>{ date }</h3>
       <p>{ description }</p>
-      <NavLink to = { `/summary-user/${email}/${date}` }className = { styles.more }>Смотрет2dь</NavLink>      
+      <NavLink to = { `/summary-user/${email}/${date}` }className = { styles.more }>Смотреть</NavLink>      
       {user.email === email && <button className = { styles.delete }>X</button> }
       {user.email === email && <button className = { styles.edit }>E</button> }
     </div>
@@ -31,7 +31,7 @@ Summary.propTypes = {
   user: propTypes.object
 }
 
-propTypes.default = {
+Summary.defaultProps = {
   user: {}
 }
 

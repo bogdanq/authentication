@@ -31,7 +31,7 @@ ProfileSetting.propTypes = {
   user: propTypes.object.isRequired
 }
 
-propTypes.default = {
+ProfileSetting.defaultProps = {
   user: {}
 }
 

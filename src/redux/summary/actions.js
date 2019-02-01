@@ -6,18 +6,12 @@ const BASE_PATH = 'http://localhost:8090/'
 const SUMMARY = 'summary'
 const baseUrl = `${BASE_PATH}${SUMMARY}`
 
-export const getSummary = () => async dispatch => {
-  const res = await axios.get(`${baseUrl}`)
-  dispatch({
-    type: types.GET_SUMMARY,
-    payload: res.data.data    
-  })
-}
+export const getSummary = () => ({
+  type: types.GET_SUMMARY,
+  promise:  axios.get(`${baseUrl}`)
+})
 
-export const getSummaryById = (id, date) => async dispatch => {
-  const res = await axios.get(`${baseUrl}/getByEmail/${id}/${date}`)
-  dispatch({
-    type: types.GET_SUMMARY_BY_ID,
-    payload: res.data.summary
-  })
-}
+export const getSummaryById = (id, date) => ({
+  type: types.GET_SUMMARY_BY_ID,
+  promise: axios.get(`${baseUrl}/getByEmail/${id}/${date}`)
+})

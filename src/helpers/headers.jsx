@@ -5,3 +5,11 @@ export default {
     'Authorization': cookies.get('token')
   }
 }
+
+export function UserEmail(email) {
+  return {
+    headers: {
+      'Authorization': email
+    }
+  }
+}

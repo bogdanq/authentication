@@ -21,7 +21,7 @@ import * as actions from './redux/auth/actions'
 
 const history = createBrowserHistory()
 
-const { Home, SignIn, SignUp, Private, SummaryList, PublicProfile } = components
+const { Home, SignIn, SignUp, Private, SummaryList } = components
   
 class App extends Component {
   
@@ -37,22 +37,20 @@ class App extends Component {
 
     return (
       <div className = { styles.App }>
-
         {
           loading
           ? <Loader />
-          :<Router history = { history }> 
+          : <Router history = { history }> 
           <Fragment>
             <Search />
             <Menu user = { user } />
             <Switch>
-                <Route exact path = '/'  component = { Home }/>
-                <AuthRoute user = { Loadash(user) } path = '/signin'  component = { () => <SignIn /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                <QuestRoute authord = { !authord }  path='/signup' component = { () => <SignUp /> } />
-                <AuthRoute user = { !Loadash(user)  } path='/private' component={Private}/>
-                <AuthRoute user = { !Loadash(user)  } path='/logOut' component={Private}/>
-                <Route path='/summary-user/:userID/:date' component={ SummaryList }/>
-                <Route path='/publick' component={ PublicProfile }/>
+              <Route exact path = '/'  component = { Home }/>
+              <AuthRoute user = { Loadash(user) } path = '/signin'  component = { () => <SignIn /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
+              <QuestRoute authord = { !authord } path='/signup' component = { () => <SignUp /> } />
+              <AuthRoute user = { !Loadash(user) } path='/private' component = { Private }/>
+              <AuthRoute path='/logOut' component = { Home }/>
+              <Route path='/summary-user/:userID/:date' component = { SummaryList }/>
             </Switch>
           </Fragment>
         </Router>
@@ -63,7 +61,7 @@ class App extends Component {
 }
 
 const  mapStateToProps  = state => ({
-  user: state.auth.user,
+  user:    state.auth.user,
   authord: state.auth.authord,
   loading: state.auth.loading,
 })
@@ -73,18 +71,17 @@ const  mapDispatchToProps  = dispatch => ({
 })
 
 App.propTypes = {
-  user: propTypes.object,
+  user:    propTypes.object,
   actions: propTypes.object.isRequired,
   authord: propTypes.bool,
   loading: propTypes.bool
 }
 
 App.defaultProps = {
-  user: {},
+  user:    {},
   authord: false,
   loading: true
 }
-
 
 export default connect(
   mapStateToProps,

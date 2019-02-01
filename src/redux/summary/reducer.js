@@ -2,7 +2,9 @@ import * as types from './types'
 
 const initialState = {
   summarysList: [],
-  userSummary: []
+  userSummary: [],
+  loadSummary: true,
+  isLoadUser: true
 }
 
 export default function reducer(state = initialState, action) {
@@ -10,15 +12,38 @@ export default function reducer(state = initialState, action) {
     case types.GET_SUMMARY: 
       return {
         ...state,
-        summarysList: action.payload
+        isLoadUser: true
+      }
+
+    case types.GET_SUMMARY_SUCCESS: 
+      return {
+        ...state,
+        summarysList: action.payload,
+        loadSummary: false
+      }
+
+    case types.GET_SUMMARY_ERROR: 
+      return {
+        ...state
       }
 
     case types.GET_SUMMARY_BY_ID: 
       return {
-        ...state,
-        userSummary: action.payload
+        ...state
       }
 
+    case types.GET_SUMMARY_BY_ID_ERROR:   
+      return {
+        ...state
+      }
+
+    case types.GET_SUMMARY_BY_ID_SUCCESS:   
+      return {
+        ...state,
+        userSummary: action.payload.summary,
+        isLoadUser: false
+      }
+      
       default:  return state
   }
 

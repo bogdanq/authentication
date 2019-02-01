@@ -6,7 +6,6 @@ export default function Summary() {
 
   return (
     <div className = { styles.filter }>
-
     </div>
   )
 }

@@ -7,7 +7,7 @@ export default function Loader() {
     <div className = { styles.load }>
       <div className = { styles.ring }>
           <div className = { styles.ballHolder }>
-              <div className = { styles.ball }></div>
+            <div className = { styles.ball }></div>
           </div>
       </div>
     </div>
