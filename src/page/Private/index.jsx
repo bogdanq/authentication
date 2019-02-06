@@ -13,9 +13,9 @@ import Loader from '../../ui/atoms/Loader'
 class Private extends Component {
 
   componentDidMount() {
-    const { actions } = this.props
+    const { actions, user } = this.props
 
-    actions.getUserSummary('1111111')
+    actions.getUserSummary(user.email)
   }
 
   render() {
@@ -38,7 +38,8 @@ class Private extends Component {
                   title = { item.title }
                   description = { item.description }
                   email = { item.userEmail }
-                  date = { item.createdAt }/>
+                  date = { item.createdAt }
+                  id = { item._id }/>
                 ) 
               }
           </div>
@@ -51,17 +52,19 @@ class Private extends Component {
 Private.propType = {
   userPrivateSummary: propType.array,
   actions: propType.object.isRequired,
-  isLoading: propType.bool
+  isLoading: propType.bool,
+  user: propType.object.isRequired
 }
 
 Private.defaultProps = {
-  userPrivateSummary: [],
+  summarysList: [],
   isLoading: true
 }
 
 const mapStateToProps = state => ({
   userPrivateSummary: state.user.userPrivateSummary,
-  isLoading: state.user.isLoading
+  isLoading: state.user.isLoading,
+  user: state.auth.user
 })
 
 const mapDispatchToProps = dispatch => ({

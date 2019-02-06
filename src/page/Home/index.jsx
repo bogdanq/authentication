@@ -19,9 +19,9 @@ class Home extends Component {
 
   render() {
     const { loadSummary } = this.props
-    const summarysList = this.props.summarysList.data
-    const { count } = this.props.summarysList
-
+    const { summarysList } = this.props
+    const count = summarysList.length
+    console.log(summarysList)
     return (
       loadSummary
     ? <Loader />
@@ -39,7 +39,8 @@ class Home extends Component {
                   date = { item.createdAt }
                   title = { item.title }
                   description = { item.description }
-                  email = { item.userEmail }/>)
+                  email = { item.userEmail }
+                  id = { item._id }/>)
             }
           </div>
         </div>

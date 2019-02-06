@@ -7,6 +7,7 @@ export default {
 }
 
 export function UserEmail(email) {
+  console.log(email)
   return {
     headers: {
       'Authorization': email

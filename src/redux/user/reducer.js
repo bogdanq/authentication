@@ -24,6 +24,22 @@ export default function reducer(state = initialState, action) {
         ...state
       }
 
+    case types.DELETE_SUMMARY: 
+      return {
+        ...state,
+      }
+    
+    case types.DELETE_SUMMARY_SUCCESS: 
+      return {
+        ...state,
+        userPrivateSummary: [...state.userPrivateSummary].filter(obj => obj._id !== action.payload.id)
+      }
+
+    case types.DELETE_SUMMARY_ERROR: 
+      return {
+        ...state
+      }
+
     default:
       return state
   }

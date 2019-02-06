@@ -21,7 +21,7 @@ import * as actions from './redux/auth/actions'
 
 const history = createBrowserHistory()
 
-const { Home, SignIn, SignUp, Private, SummaryList } = components
+const { Home, SignIn, SignUp, Private, SummaryList, CreateSummary } = components
   
 class App extends Component {
   
@@ -51,6 +51,7 @@ class App extends Component {
               <AuthRoute user = { !Loadash(user) } path='/private' component = { Private }/>
               <AuthRoute path='/logOut' component = { Home }/>
               <Route path='/summary-user/:userID/:date' component = { SummaryList }/>
+              <AuthRoute user = { !Loadash(user) } path='/create-summary' component = { () => <CreateSummary history = { history } /> }/>
             </Switch>
           </Fragment>
         </Router>

@@ -1,0 +1,58 @@
+.input {
+  height: 40px;
+  width: 350px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 111, 111);
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: 'Open sans', sans-serif;
+  transition: all .5s;
+  margin-left: 20%;
+}
+
+.input:focus, .year:focus {
+  background: rgba(235, 235, 235, 0.479);
+  border: 1px solid transparent;
+  border-bottom: 1px solid #000
+}
+
+
+.year {
+  height: 40px;
+  width: 60px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 111, 111);
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: 'Open sans', sans-serif;
+  transition: all .5s;
+  margin-left: 20%;
+}
+
+.btn {
+  height: 40px;
+  width: auto;
+  padding: 0 20px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 111, 111);
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: 'Open sans', sans-serif;
+  transition: all .5s;
+  margin-left: 20%;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.btn:after {
+  position: absolute;
+  content: '\2B07';
+  top: 50%;
+  right: 0;
+  line-height: 0;
+  font-size: 20px;
+}
