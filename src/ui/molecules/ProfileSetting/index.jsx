@@ -12,37 +12,26 @@ import * as actions from '../../../redux/auth/actions'
 class ProfileSetting extends Component {
 
   render() {
-    const { actions, user } = this.props
+    const { actions } = this.props
 
     return (
-      <div className = { styles.setting }>        
-        <h2><span className = { styles.arrow }>&#9660;</span>{ user.firstName } { user.lastName }</h2>
-        <ul>
-          <li><NavLink to = '/private'>Личный кабинет</NavLink></li>
-          <li><NavLink to = '/logOut' onClick = { actions.logOut }>Выйти</NavLink></li>
-        </ul>
-      </div>
+      <NavLink to = '/logOut' activeClassName = { styles.active }  className = { styles.menuLink } onClick = { actions.logOut }>Выйти</NavLink>
     )
   }
 }
 
 ProfileSetting.propTypes = {
-  actions: propTypes.object.isRequired,
-  user: propTypes.object.isRequired
+  actions: propTypes.object.isRequired
 }
 
-ProfileSetting.defaultProps = {
-  user: {}
-}
-
-const mapStateToPropsm = state => ({
-  loadToken: state.auth.loadToken,
+const mapStateToProps = state => ({
 })
+
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
 export default connect(
-  mapStateToPropsm,
+  mapStateToProps,
   mapDispatchToProps
 )(ProfileSetting)

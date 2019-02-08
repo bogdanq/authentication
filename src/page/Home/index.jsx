@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Summary from '../../ui/organisms/Summary'
-import Filter from '../../ui/organisms/Filter'
+import Preview from '../../ui/organisms/Preview'
 import Loader from '../../ui/atoms/Loader'
 
 import styles from './index.css'
@@ -21,28 +21,27 @@ class Home extends Component {
     const { loadSummary } = this.props
     const { summarysList } = this.props
     const count = summarysList.length
-    console.log(summarysList)
+    const text = 'Мы найдем вам резюме на любой вкус по всей стране'
+ 
     return (
       loadSummary
     ? <Loader />
     : <Fragment>
-        <div className = { styles.home }>
-          <div className = { styles.filter }>
-            <Filter />
-          </div>
-          <div className = { styles.summary }>
-          <h1>Всего вакансий: { count }</h1>
-            {
-              summarysList.map((item, id) => 
-                <Summary 
-                  key = { id }
-                  date = { item.createdAt }
-                  title = { item.title }
-                  description = { item.description }
-                  email = { item.userEmail }
-                  id = { item._id }/>)
-            }
-          </div>
+        <Preview color = '#83b0b9' title = 'Просмотр резюме' description = { text }/>
+        <div className = { styles.filter }>
+        </div>
+        <div className = { styles.summary }>
+        <h1>Всего вакансий: { count }</h1>
+          {
+            summarysList.map((item, id) => 
+              <Summary 
+                key = { id }
+                date = { item.createdAt }
+                title = { item.title }
+                description = { item.description }
+                email = { item.userEmail }
+                id = { item._id }/>)
+          }
         </div>
         <button className = { styles.nextBtn }>Next</button>
       </Fragment>

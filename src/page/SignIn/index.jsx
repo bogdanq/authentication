@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 import propTypes from 'prop-types'
 
 import * as actions from '../../redux/auth/actions'
+import Preview from '../../ui/organisms/Preview'
+import styles from './index.css'
 
 class SignIn extends Component {
 
@@ -16,9 +18,11 @@ class SignIn extends Component {
   render() {
     const { inputLogin, inputPass } = this.state
     const { actions } = this.props
+    const text = 'Введите логин и пароль для входа в личный кабинет'
     
     return (
-      <div className = 'signin'>
+      <div className = { styles.signIn }>
+        <Preview color = '#343943' title = 'Войдите или зарегистрируйтесь' description = { text }/>
         <h1>Пожалуйста войдите</h1>
         <input type="text" value = { inputLogin } onChange = { this.handleLogin } placeholder = 'login'/> <br /><br />
         <input type="text" value = { inputPass } onChange = { this.handlePass } placeholder = 'password'/><br />

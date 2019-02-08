@@ -4,5 +4,6 @@ import Home from  './Home'
 import SignUp from  './SignUp'
 import SummaryList from  './SummaryList'
 import CreateSummary from  './createSummary'
+import Vacanci from  './Vacanci'
 
-export default  { SignIn, Private, Home, SignUp, SummaryList, CreateSummary }
+export default  { SignIn, Private, Home, SignUp, SummaryList, CreateSummary, Vacanci }

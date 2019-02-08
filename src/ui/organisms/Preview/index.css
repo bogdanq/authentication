@@ -1,0 +1,37 @@
+.Preview {
+  width: 100%;
+  height: 90vh;
+  text-align: center
+}
+
+.h2 {
+  font-size: 55px !important;
+  color: #fff;
+  font-weight: bold !important;
+  padding-top: 20% !important;
+}
+
+.h3 {
+  font-size: 25px !important;
+  color: #fff;
+  width: 500px;
+  margin: 0 auto !important;
+  line-height: 1.5 !important;
+  transform: translateY(50px)
+}
+
+.img {
+  margin-top: 15%;
+  cursor: pointer;
+  animation: arrow 2s infinite ease-in-out;
+  height: 50px;
+  width: 90px
+}
+
+@keyframes arrow {
+  from {
+    transform: translateY(-5px)
+  } to {
+    transform: translateY(5px)
+  }
+}

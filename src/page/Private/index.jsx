@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Summary from '../../ui/organisms/Summary'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -8,6 +8,7 @@ import propType from 'prop-types'
 import styles from './index.css'
 
 import * as actions from '../../redux/user/actions'
+import Preview from '../../ui/organisms/Preview'
 import Loader from '../../ui/atoms/Loader'
 
 class Private extends Component {
@@ -21,13 +22,15 @@ class Private extends Component {
   render() {
     const { userPrivateSummary, isLoading } = this.props
     const count = userPrivateSummary.length
+    const text = 'легко управляйте своими заявками и редактируйте их'
 
     return (
       <div className = { styles.private }>
         {
           isLoading
           ? <Loader />
-          : <div>
+          : <Fragment>
+            <Preview color = '#e4b162' title = 'Личный кабинет' description = { text }/>
             <h1>Мои вакансии</h1>
             <NavLink to = '/create-summary'  className = { styles.menuLink } exact >Создать вакансию</NavLink>
             <h2 className = { styles.privateH2 }>Вакансий всего: { count }</h2>
@@ -42,7 +45,7 @@ class Private extends Component {
                   id = { item._id }/>
                 ) 
               }
-          </div>
+          </Fragment>
         }
       </div>
     )

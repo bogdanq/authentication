@@ -1,4 +1,33 @@
 .search {
-  height: 300px;
-  border: 1px solid red
+  padding-top: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+.input {
+  width: 60%;
+  height: 80px;
+  background: none;
+  border: 2px solid #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  outline: none;
+  padding-left: 50px;
+  font-size: 25px;
+  color: #fff
+}
+.input::placeholder {
+  color: #fff
+}
+
+.enter {
+  outline: none;
+  background: none;
+  height: 86px;
+  border: 2px solid #fff;
+  border-left: none;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+  padding: 0 15px
 }

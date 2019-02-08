@@ -10,11 +10,6 @@
   cursor: pointer;
 }
 
-.home {
-  display: flex;
-  justify-content: space-between
-}
-
 .summary {
-  width: 60%
+  width: 100%
 }
