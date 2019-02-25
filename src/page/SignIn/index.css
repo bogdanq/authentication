@@ -1,3 +1,77 @@
 .signIn {
   position: relative;
 }
+
+.body {
+  height: 900px;
+  text-align: center;
+  background: rgba(209, 209, 209, 0.377);
+  padding-top: 150px;
+}
+
+.body h1 {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Open sans', serif;
+  padding: 50px 0;
+}
+
+.form {
+  width: 700px;
+  margin: 0 auto
+}
+
+.form h1 {
+  height: 100px;
+  color: #fff;
+  background: rgb(52, 57, 67);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: -2px -10px 32px -1px rgba(0,0,0,0.66);
+}
+
+.log {
+  background: rgb(255, 255, 255);
+  height: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: -3px 12px 32px -1px rgba(0,0,0,0.66);
+  padding-bottom: 50px;
+}
+
+.log input {
+  height: 50px;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: 1px solid rgb(52, 57, 67);
+  outline: none;
+  margin-top: 20px;
+  padding-left: 25px;
+  font-family: 'Open sans', serif;
+  color: rgb(141, 141, 141)
+}
+
+.log input::placeholder {
+  color: rgb(141, 141, 141)
+}
+
+.log button {
+  width: 65%;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  background: rgb(52, 57, 67);
+  margin-top: 50px;
+  padding: 15px 0;
+  font-family: 'Open sans', serif;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.err {
+  color: red;
+  padding-top: 15px;
+}

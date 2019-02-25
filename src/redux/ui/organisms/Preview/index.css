@@ -1,0 +1,49 @@
+.Preview {
+  width: 100%;
+  text-align: center;
+  animation: block 1s ease-in-out;
+  transform: translateX(0);
+  height: 100vh
+}
+
+.h2 {
+  font-size: 55px !important;
+  color: #fff;
+  font-weight: bold !important;
+  padding-top: 20% !important;
+}
+
+.h3 {
+  font-size: 25px !important;
+  color: #fff;
+  width: 500px;
+  margin: 0 auto !important;
+  line-height: 1.5 !important;
+  transform: translateY(50px);
+}
+
+.img {
+  transform: translateY(80px);
+  animation: arrows 2s infinite;
+  cursor: pointer;
+  height: 50px
+}
+
+@keyframes arrows {
+  to {
+    transform: translateY(120px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes block {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

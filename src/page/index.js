@@ -5,5 +5,15 @@ import SignUp from  './SignUp'
 import SummaryList from  './SummaryList'
 import CreateSummary from  './createSummary'
 import Vacanci from  './Vacanci'
+import UpdateSummary from  './UpdateSummary'
 
-export default  { SignIn, Private, Home, SignUp, SummaryList, CreateSummary, Vacanci }
+export default  { 
+  SignIn, 
+  Private, 
+  Home, 
+  SignUp, 
+  SummaryList, 
+  CreateSummary, 
+  Vacanci,
+  UpdateSummary,
+ }

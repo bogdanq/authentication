@@ -12,15 +12,15 @@ class SummaryList extends Component {
 
   componentDidMount() {
     const { match, actions } = this.props
-
-    actions.getSummaryById(match.params.userID, match.params.date)
+    actions.resetLoading()
+    actions.getSummaryById(match.params.id)
   }
 
   render() {    
-    const { userSummary, isLoadUser } = this.props
-
+    const { userSummary, isLoadUser, user, match } = this.props
+    console.log('summaryList', isLoadUser)
     return (
-      isLoadUser
+    isLoadUser
     ? <Loader />
     :<div className = 'SummaryList'>
         {
@@ -35,7 +35,8 @@ class SummaryList extends Component {
               language = { item.language }
               phone = { item.phone }
               userEmail = { item.userEmail }
-              />
+              userId = { user.email }
+              id = { match.params.id }/>
           )
         }        
       </div>
@@ -46,17 +47,20 @@ class SummaryList extends Component {
 SummaryList.propTypes = {
   match: propTypes.object.isRequired,
   userSummary: propTypes.array,
-  isLoadUser: propTypes.bool
+  isLoadUser: propTypes.bool,
+  user: propTypes.object
 }
 
 SummaryList.defaultProps = {
   userSummary: [],
-  isLoadUser: false
+  isLoadUser: true,
+  user: {}
 }
 
 const mapStateToProps = state => ({
   userSummary: state.summary.userSummary,
-  isLoadUser: state.summary.isLoadUser,
+  isLoadUser:  state.summary.isLoadUser,
+  user:        state.auth.user,
 })
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)

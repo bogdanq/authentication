@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch, Router } from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import propTypes from 'prop-types'
 
 import components from './page'
 import Menu from './ui/organisms/Menu'
-import Search from './ui/organisms/Search'
 
 import Loader from './ui/atoms/Loader'
 
@@ -16,12 +14,11 @@ import AuthRoute from './helpers/AuthRoute'
 import Loadash from './helpers/Loadash'
 
 import styles from './index.css'
+import history from './helpers/history'
 
 import * as actions from './redux/auth/actions'
 
-const history = createBrowserHistory()
-
-const { Home, SignIn, SignUp, Private, SummaryList, CreateSummary, Vacanci } = components
+const { Home, SignIn, SignUp, Private, SummaryList, CreateSummary, Vacanci, UpdateSummary } = components
   
 class App extends Component {
   
@@ -34,7 +31,6 @@ class App extends Component {
 
   render() {
     const { user, authord, loading } = this.props
-
     return (
       <div className = { styles.App }>
         {
@@ -45,16 +41,16 @@ class App extends Component {
             <div className = { styles.wrapper }>
               <Menu user = { user } />
               <div className = { styles.body }> 
-                <Search history = { history }/>
                 <Switch>
                   <Route exact path = '/'  component = { Home }/>
                   <Route path = '/vacanci'  component = { Vacanci }/>
                   <AuthRoute user = { Loadash(user) } path = '/signin'  component = { () => <SignIn /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
                   <QuestRoute authord = { !authord } path='/signup' component = { () => <SignUp /> } />
                   <AuthRoute user = { !Loadash(user) } path='/private' component = { Private }/>
+                  <AuthRoute user = { !Loadash(user) } path='/update/:id' component = { (props) => <UpdateSummary {...props} historys = { history }/> }/>
                   <AuthRoute path='/logOut' component = { Home }/>
-                  <Route path='/summary-user/:userID/:date' component = { SummaryList }/>
-                  <AuthRoute user = { !Loadash(user) } path='/create-summary' component = { () => <CreateSummary history = { history } /> }/>
+                  <Route path='/summary-user/:id' component = { SummaryList }/>
+                  <AuthRoute user = { !Loadash(user) } path='/create-summary' component = { () => <CreateSummary historys = { history }/> }/>
                 </Switch>
               </div>
             </div>

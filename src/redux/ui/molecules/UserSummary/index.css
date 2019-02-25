@@ -1,0 +1,49 @@
+.body {
+  width: 70%;
+  margin: 0 auto
+}
+
+.bodyH1 {
+  font-family: "Open sans" serif;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 50px 0
+}
+
+.phone {
+  font-family: "Open sans" serif;
+  font-size: 20px;
+  margin: 25px 0
+}
+
+.phone span {
+  font-size: 18px;
+  color: rgb(105, 105, 105);
+  text-decoration: underline
+}
+
+.ourH1 {
+  font-family: "Open sans" serif;
+  font-size:  25px;
+  font-weight: bold;
+  margin: 10px 0 15px 0
+}
+
+.editBtn  {
+  display: inline-block;
+  font-size:  12px;
+  background: rgb(104, 104, 104);
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 1.8;
+  transform: translate(10px, -5px);
+  cursor: pointer;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.4;
+}

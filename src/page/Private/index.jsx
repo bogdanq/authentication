@@ -31,20 +31,22 @@ class Private extends Component {
           ? <Loader />
           : <Fragment>
             <Preview color = '#e4b162' title = 'Личный кабинет' description = { text }/>
-            <h1>Мои вакансии</h1>
-            <NavLink to = '/create-summary'  className = { styles.menuLink } exact >Создать вакансию</NavLink>
-            <h2 className = { styles.privateH2 }>Вакансий всего: { count }</h2>
-              {
-                userPrivateSummary.map((item, id) =>
-                <Summary
-                  key = { id }
-                  title = { item.title }
-                  description = { item.description }
-                  email = { item.userEmail }
-                  date = { item.createdAt }
-                  id = { item._id }/>
-                ) 
-              }
+              <div className = { styles.body }>
+              <h1>Мои вакансии</h1>
+              <NavLink to = '/create-summary'  className = { styles.menuLink } exact >Создать вакансию</NavLink>
+              <h2 className = { styles.privateH2 }>Вакансий всего: { count }</h2>
+                {
+                  userPrivateSummary.map((item, id) =>
+                  <Summary
+                    key = { id }
+                    title = { item.title }
+                    description = { item.description }
+                    email = { item.userEmail }
+                    date = { item.createdAt }
+                    id = { item._id }/>
+                  ) 
+                }
+              </div>
           </Fragment>
         }
       </div>

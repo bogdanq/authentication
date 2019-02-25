@@ -12,7 +12,9 @@ const customMiddleWare = ({ dispatch }) => next => action => {
         dispatch({ type: `${action.type}_SUCCESS`,  payload: res.data }) 
         res.data.token && cookies.set('token', String(res.data.token))
       })
-      .catch(rej => dispatch({ type: `${action.type}_ERROR` }))
+      .catch(rej => {
+        dispatch({ type: `${action.type}_ERROR` })
+      })
   }
   next(action)
 }

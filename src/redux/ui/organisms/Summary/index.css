@@ -1,0 +1,98 @@
+.summary {
+  width: 750px;
+  margin: 0 auto;
+  padding-bottom: 25px;
+  margin-top: 80px;
+  border-bottom: 1px solid rgb(131, 176, 185);
+  position: relative;
+  z-index: 0;
+  height: 200px;
+  overflow: hidden
+}
+
+.more {
+  display: block;
+  text-align: center;
+  line-height: 2.3;
+  border: none;
+  background: none;
+  outline: none;
+  border: 1px solid rgb(131, 176, 185);
+  height: 40px;
+  width: 90px;
+  cursor: pointer;
+  color: #000
+}
+
+.delete {
+  border: none;
+  background: none;
+  outline: none;
+  background: red;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0
+}
+
+.edit {
+  border: none;
+  background: none;
+  outline: none;
+  background: blue;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 50px
+}
+
+
+.summary p {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  line-height: 1.4;
+  padding-left: 20%;
+  position: relative;
+  width: 67%;
+  height: 85px
+}
+
+.summary p:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(rgba(255, 255, 255, 0.521), rgb(255, 255, 255))
+}
+
+.summary h4 {
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 20px;
+}
+
+.summary h3 {
+  color: rgb(92, 91, 91);
+}
+
+
+.summary h2 {
+  font-family: 'Roboto';
+  font-size: 25px;
+  color: rgb(0, 0, 0)
+}
+
+
+.summary h3 {
+  font-family: 'Open Sans';
+  font-size: 17px;
+  margin: 15px 0
+}

@@ -1,9 +1,23 @@
 .private h1 {
   text-align: center;
   font-weight: bold;
-  margin: 50px 0
+  margin: 50px 0;
+  color: #000;
+  font-family: 'Open sans';
+  font-size: 35px
 }
 
 .privateH2 {
-  color: rgb(124, 124, 124)
+  color: rgb(124, 124, 124);
+  margin: 10px 50px
+}
+
+.body {
+  height: 800px
+}
+
+.menuLink {
+  color: #000;
+  font-family: 'Open sans';
+  margin: 10px 50px
 }

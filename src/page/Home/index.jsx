@@ -22,28 +22,32 @@ class Home extends Component {
     const { summarysList } = this.props
     const count = summarysList.length
     const text = 'Мы найдем вам резюме на любой вкус по всей стране'
- 
+
     return (
-      loadSummary
-    ? <Loader />
-    : <Fragment>
+      <Fragment>
         <Preview color = '#83b0b9' title = 'Просмотр резюме' description = { text }/>
-        <div className = { styles.filter }>
-        </div>
-        <div className = { styles.summary }>
-        <h1>Всего вакансий: { count }</h1>
-          {
-            summarysList.map((item, id) => 
-              <Summary 
-                key = { id }
-                date = { item.createdAt }
-                title = { item.title }
-                description = { item.description }
-                email = { item.userEmail }
-                id = { item._id }/>)
-          }
-        </div>
-        <button className = { styles.nextBtn }>Next</button>
+        {
+          loadSummary
+          ? <Loader />
+          : <Fragment>
+              <div className = { styles.filter }>
+              </div>
+              <div className = { styles.summary }>
+              <h1>Всего вакансий: { count }</h1>
+                {
+                  summarysList.map((item, id) => 
+                    <Summary 
+                      key = { id }
+                      date = { item.createdAt }
+                      title = { item.title }
+                      description = { item.description }
+                      email = { item.userEmail }
+                      id = { item._id }/>)
+                }
+              </div>
+              <button className = { styles.nextBtn }>Next</button>
+            </Fragment>
+        }
       </Fragment>
     )
   }
