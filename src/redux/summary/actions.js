@@ -4,7 +4,7 @@ import * as userTypes from '../user/types'
 import history from '../../helpers/history'
 import headers from '../../helpers/headers'
 
-const BASE_PATH = 'http://localhost:8090/'
+const BASE_PATH = 'http://localhost:8080/'
 const SUMMARY = 'summary'
 const baseUrl = `${BASE_PATH}${SUMMARY}`
 

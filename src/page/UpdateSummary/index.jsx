@@ -15,7 +15,7 @@ import * as actions from '../../redux/summary/actions'
 
 class UpdateSummary extends React.Component {
   state = {
-    value: 3,
+    value: 0,
     title: '',
     description: '',
     phone: '',
@@ -69,7 +69,7 @@ class UpdateSummary extends React.Component {
             <Education  
               change = { this.updateFieldByR } 
               createList = { education }
-              addInput = { this.addEducaions }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
           </TabContainer>
 
@@ -77,7 +77,7 @@ class UpdateSummary extends React.Component {
             <Language 
               change = { this.updateFieldByR } 
               createList = { language }
-              addInput = { this.addLanguage }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
 
           </TabContainer>
@@ -86,7 +86,7 @@ class UpdateSummary extends React.Component {
             <Historys 
               change = { this.updateFieldByR } 
               createList = { history }
-              addInput = { this.addHistory }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
           </TabContainer>
 
@@ -110,23 +110,16 @@ class UpdateSummary extends React.Component {
     }))
   }
 
-  addEducaions = () => {
+  addInput = name => {
+    let obj = {}
+    for(let key in this.state[name][0]) {
+      obj[key] = ''
+    }
     this.setState(prev => ({
-      education: [...prev.education, { institution: '', year: '' }]
+      [name]: [...prev[name], obj]
     }))
   }
 
-  addLanguage = () => {
-    this.setState(prev => ({
-      language: [...prev.language, { title: '', description: '' }]
-    }))
-  }
-
-  addHistory = () => {
-    this.setState(prev => ({
-      history: [...prev.history, { companyName: '', title: '', description: '' }]
-    }))
-  }
 
   deleteInput = name => {
     this.setState(prev => ({

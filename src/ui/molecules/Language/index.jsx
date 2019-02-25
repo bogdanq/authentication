@@ -20,7 +20,7 @@ class Language extends Component {
               change = { change }/>
           )
         }
-        <button onClick = { addInput } className = { styles.btnAdd }>Указать еще языки</button>
+        <button onClick = { () => addInput('language') } className = { styles.btnAdd }>Указать еще языки</button>
         { createList.length > 1 && <button onClick = { () => deleteInput('language') } className = { styles.btnAdd }>Отменить</button> }
       </div>
     )

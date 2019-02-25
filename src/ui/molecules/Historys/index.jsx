@@ -20,7 +20,7 @@ class Historys extends Component {
             change = { change }/>)
         }
 
-        <button onClick = { addInput } className = { styles.btn }>Указать еще</button>
+        <button onClick = { () => addInput('history') } className = { styles.btn }>Указать еще</button>
         { createList.length > 1 && <button onClick = { () => deleteInput('history') } className = { styles.btn }>Отменить</button> }
       </Fragment>
     )

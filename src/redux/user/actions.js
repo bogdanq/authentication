@@ -3,7 +3,7 @@ import axios from 'axios'
 import * as types from './types'
 import { UserEmail } from '../../helpers/headers'
 
-const BASE_PATH = 'http://localhost:8090/'
+const BASE_PATH = 'http://localhost:8080/'
 const SUMMARY = 'users'
 const baseUrl = `${BASE_PATH}${SUMMARY}`
 

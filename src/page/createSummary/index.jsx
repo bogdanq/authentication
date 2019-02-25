@@ -65,7 +65,7 @@ class createSummary extends React.Component {
             <Education  
               change = { this.updateFieldByR } 
               createList = { education }
-              addInput = { this.addEducaions }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
           </TabContainer>
 
@@ -73,16 +73,15 @@ class createSummary extends React.Component {
             <Language 
               change = { this.updateFieldByR } 
               createList = { language }
-              addInput = { this.addLanguage }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
-
           </TabContainer>
 
           <TabContainer dir={theme.direction}>
             <Historys 
               change = { this.updateFieldByR } 
               createList = { history }
-              addInput = { this.addHistory }
+              addInput = { this.addInput }
               deleteInput = { this.deleteInput }/>
           </TabContainer>
 
@@ -108,21 +107,13 @@ class createSummary extends React.Component {
     }))
   }
 
-  addEducaions = () => {
+  addInput = (name) => {
+    let obj = {}
+    for(let key in this.state[name][0]) {
+      obj[key] = ''
+    }
     this.setState(prev => ({
-      education: [...prev.education, { institution: '', year: '' }]
-    }))
-  }
-
-  addLanguage = () => {
-    this.setState(prev => ({
-      language: [...prev.language, { title: '', description: '' }]
-    }))
-  }
-
-  addHistory = () => {
-    this.setState(prev => ({
-      history: [...prev.history, { companyName: '', title: '', description: '' }]
+      [name]: [...prev[name], obj]
     }))
   }
 

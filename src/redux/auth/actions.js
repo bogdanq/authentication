@@ -3,18 +3,19 @@ import cookies from 'browser-cookies'
 
 import * as types from './types'
 import headers from '../../helpers/headers'
+import Request from '../../helpers/Request'
 
-const BASE_PATH = 'http://localhost:8090/'
+const BASE_PATH = 'http://localhost:8080/'
 const USERS = 'users'
 const baseUrl = `${BASE_PATH}${USERS}`
 
-export const signUp = (email, pas, firstName, lastName ) => ({
+export const signUp = (email, password, firstName, lastName ) => ({
   type: types.SIGN_UP,
   promise: axios.post(`${baseUrl}/signup`, {
-    email: email,
-    password: pas,
-    firstName: firstName,
-    lastName: lastName
+    email,
+    password,
+    firstName,
+    lastName
   })
 })
 
@@ -31,6 +32,6 @@ export const logOut = () => {
 }
 
 export const getUser = () => ({
-  type: 'GET_USER',
-  promise: axios.get(`${baseUrl}/current-user`, headers)
+  type: types.GET_USER,
+  promise: Request.get('/users/current-user', headers)
 })

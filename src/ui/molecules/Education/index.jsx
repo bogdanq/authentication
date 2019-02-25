@@ -20,7 +20,7 @@ class Education extends Component {
               change = { change }/>
           )
         }
-        <button onClick = { addInput } className = { styles.btnAdd }>Добавить еще учреждение</button>
+        <button onClick = { () => addInput('education') } className = { styles.btnAdd }>Добавить еще учреждение</button>
         { createList.length > 1 && <button onClick = { () => deleteInput('education') } className = { styles.btnAdd }>Отменить</button> }
       </div>
     )
