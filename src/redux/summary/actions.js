@@ -30,12 +30,9 @@ export const deleteSummary = id => dispatch => {
   })
 }
 
-export const postSummary = (summary) => dispatch => {
-  dispatch({
-    type: types.POST_SUMMARY,
-  })
-
- axios.post(`${baseUrl}/add`, {
+export const postSummary = (summary) => ({
+  type: types.POST_SUMMARY,
+  promise: axios.post(`${baseUrl}/add`, {
     title: summary.title,
     phone: summary.phone,
     description: summary.description,
@@ -43,15 +40,8 @@ export const postSummary = (summary) => dispatch => {
     history: summary.history,
     education: summary.education,
     language: summary.language
-  }, headers).then(res => {  
-    dispatch({
-      type: types.POST_SUMMARY_SUCCESS
-    })
-    history.goBack()
-  }, err => {
-    console.log(err)
-  })
-}
+  }, headers)
+})
 
 export const putSummary = (summary, id) => dispatch => {
   dispatch({

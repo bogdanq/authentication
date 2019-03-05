@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Switch, Router } from 'react-router-dom'
+import { Route, Switch, Router, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import propTypes from 'prop-types'
@@ -8,10 +8,6 @@ import components from './page'
 import Menu from './ui/organisms/Menu'
 
 import Loader from './ui/atoms/Loader'
-
-import QuestRoute from './helpers/QuestRoute'
-import AuthRoute from './helpers/AuthRoute'
-import Loadash from './helpers/Loadash'
 
 import styles from './index.css'
 import history from './helpers/history'
@@ -30,7 +26,8 @@ class App extends Component {
   }
 
   render() {
-    const { user, authord, loading } = this.props
+    const { user, loading } = this.props
+
     return (
       <div className = { styles.App }>
         {
@@ -44,13 +41,13 @@ class App extends Component {
                 <Switch>
                   <Route exact path = '/'  component = { Home }/>
                   <Route path = '/vacanci'  component = { Vacanci }/>
-                  <AuthRoute user = { Loadash(user) } path = '/signin'  component = { () => <SignIn /> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                  <QuestRoute authord = { !authord } path='/signup' component = { () => <SignUp /> } />
-                  <AuthRoute user = { !Loadash(user) } path='/private' component = { Private }/>
-                  <AuthRoute user = { !Loadash(user) } path='/update/:id' component = { (props) => <UpdateSummary {...props} historys = { history }/> }/>
-                  <AuthRoute path='/logOut' component = { Home }/>
+                  <Route path = '/signin'  render = { () => !user.firstName ? <SignIn /> : <Redirect to = '/'/> } />                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                  <Route path='/signup' render = { () => !user.firstName ? <SignUp /> : <Redirect to = '/'/> } />
+                  <Route path='/private' render = { () => user.firstName ? <Private /> : <Redirect to = '/'/> }/>
+                  <Route path='/update/:id' component = { (props) => <UpdateSummary {...props} historys = { history }/> }/>
+                  <Route path='/logOut' component = { Home }/>
                   <Route path='/summary-user/:id' component = { SummaryList }/>
-                  <AuthRoute user = { !Loadash(user) } path='/create-summary' component = { () => <CreateSummary historys = { history }/> }/>
+                  <Route path='/create-summary' render = { (props) => user.firstName ? <CreateSummary {...props} historys = { history }/> : <Redirect to = '/'/> }/>
                 </Switch>
               </div>
             </div>
@@ -75,13 +72,11 @@ const  mapDispatchToProps  = dispatch => ({
 App.propTypes = {
   user:    propTypes.object,
   actions: propTypes.object.isRequired,
-  authord: propTypes.bool,
   loading: propTypes.bool
 }
 
 App.defaultProps = {
   user:    {},
-  authord: false,
   loading: true
 }
 

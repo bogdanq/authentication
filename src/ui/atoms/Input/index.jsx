@@ -3,16 +3,28 @@ import propTypes from 'prop-types'
 
 import styles from './index.css'
 
-export default function Input({ type, value, placeholder, onChange, error }) {
+export default function Input({ typeInput, value, updateField, text, name, className, nested, id }) {
   return (
     <Fragment>
-      <input 
-        className = { error && styles.Input } 
-        type = { type } value = { value } 
-        placeholder = { placeholder } 
-        onChange = { onChange }
-        required/>
-      <p className = { styles.error }>{ error }</p>
+      <p className = { styles.text }>{ text }</p>
+      {
+        typeInput === 'text' ?
+          <input
+            className = { className }
+            type = { typeInput }
+            value = { value }
+            onChange={ updateField }
+            name = { name }/>
+        :
+          <textarea 
+            className = { className }
+            type = { typeInput }
+            value = { value }
+            onChange = { updateField }
+            cols = "50" 
+            rows = "20"
+            name = { name }></textarea>
+      }
     </Fragment>
   )
 }

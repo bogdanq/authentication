@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import propTypes from 'prop-types'
+import propTypes from 'prop-types'
 
-import InputCreate from '../../atoms/InputCreate'
+import Input from '../../atoms/Input'
 import styles from './index.css'
 
 class HistoryList extends Component {
@@ -11,7 +11,7 @@ class HistoryList extends Component {
 
     return (
       <div className = { styles.education }>
-        <InputCreate 
+        <Input 
           text = 'Укажите название прошлого места работы'
           className = { styles.input }
           typeInput = 'text'
@@ -19,7 +19,7 @@ class HistoryList extends Component {
           placeholder = 'учебное заведение'
           updateField = { e => change(['history', index, 'companyName'], e.target.value) }/>
 
-          <InputCreate 
+          <Input 
             text = 'Ваша должность'
             className = { styles.input }
             typeInput = 'text'
@@ -29,7 +29,7 @@ class HistoryList extends Component {
 
           <div className = { styles.inline }>
             <div className = { styles.block }>
-              <InputCreate 
+              <Input 
                 text = 'дата начала'
                 className = { styles.year }
                 typeInput = 'text'
@@ -38,7 +38,7 @@ class HistoryList extends Component {
             </div>
               
             <div className = { styles.block }>
-              <InputCreate 
+              <Input 
                 text = 'конец'
                 className = { styles.year }
                 typeInput = 'text'
@@ -47,7 +47,7 @@ class HistoryList extends Component {
             </div>
           </div>
 
-          <InputCreate 
+          <Input 
             text = 'краткое описание обязанностей'
             className = { styles.area }
             typeInput = 'textarea'
@@ -58,5 +58,16 @@ class HistoryList extends Component {
     )
   }
 }
+
+HistoryList.propTypes = {
+  createList: propTypes.object, 
+  change: propTypes.func.isRequired, 
+  index: propTypes.number.isRequired, 
+}
+
+HistoryList.defaultProps = {
+  createList: {}
+}
+
 
 export default HistoryList

@@ -30,30 +30,34 @@ class SignUp extends Component {
           <h1>Пожалуйста Зарегистрируйтесь</h1>
           <form className = { styles.log }>
             <Input 
-              type="text"
+              text = 'Логин'
+              typeInput="text"
               value = { inputLogin.value }
-              onChange = { this.handleLogin } 
+              updateField = { this.handleLogin } 
               placeholder = 'login'
               error = { inputLogin.error }/>
 
             <Input 
-              type="text"
+              text = 'Пароль'
+              typeInput="text"
               value = { inputPass.value }
-              onChange = { this.handlePass } 
+              updateField = { this.handlePass } 
               placeholder = 'password'
               error = { inputPass.error }/>
 
             <Input 
-              type="text"
+              text = 'Введите имя'
+              typeInput = "text"
               value = { inputName.value }
-              onChange = { this.handleName } 
+              updateField = { this.handleName } 
               placeholder = 'Name'
               error = { inputName.error }/>
 
             <Input 
-              type="text"
+              text = 'Введите фамилию'
+              typeInput = "text"
               value = { inputLast.value }
-              onChange = { this.handleLast } 
+              updateField = { this.handleLast } 
               placeholder = 'last name'
               error = { inputLast.error }/>
             <button onClick = {() => actions.signUp(inputLogin.value, inputPass.value, inputLast.value, inputName.value) }>Регистрация</button>

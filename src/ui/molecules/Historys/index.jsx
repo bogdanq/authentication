@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-// import propTypes from 'prop-types'
+import propTypes from 'prop-types'
 
 import HistoryList from '../../atoms/HistoryList'
 import styles from './index.css'
@@ -27,5 +27,15 @@ class Historys extends Component {
   }
 }
 
+Historys.propTypes = {
+  createList: propTypes.array, 
+  change: propTypes.func.isRequired, 
+  addInput: propTypes.func.isRequired, 
+  deleteInput: propTypes.func.isRequired, 
+}
+
+Historys.defaultProps = {
+  createList: []
+}
 
 export default Historys

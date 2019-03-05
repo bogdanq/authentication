@@ -7,7 +7,6 @@ import propTypes from 'prop-types'
 import * as actions from '../../redux/auth/actions'
 import Preview from '../../ui/organisms/Preview'
 import Input from '../../ui/atoms/Input'
-// import validate from '../../helpers/validate'
 
 import styles from './index.css'
 
@@ -32,18 +31,20 @@ class SignIn extends Component {
             <div className = { styles.log }>
               <form>
                 <Input 
-                  type="text"
+                  text = 'Логин'
+                  typeInput = 'text'
+                  placeholder = 'учебное заведение'
                   value = { inputLogin.value }
-                  onChange = { this.handleLogin } 
-                  placeholder = 'login'
-                  error = { inputLogin.error }/>
+                  updateField = { this.handleLogin }/>
 
                 <Input 
-                  type="text"
+                  text = 'Пароль'
+                  typeInput="text"
                   value = { inputPass.value }
-                  onChange = { this.handlePass } 
+                  updateField = { this.handlePass } 
                   placeholder = 'password'
                   error = { inputPass.error }/>
+
                 <p className = { styles.err } id = 'qqqq'>{ authError }</p>
                 <button type = 'submit' onClick = { this.submit }>Войти</button>     
               </form>         

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './index.css'
+import propTypes from 'prop-types'
 
 export default function Language({ title, description }) {
   return (
@@ -9,4 +10,14 @@ export default function Language({ title, description }) {
       <hr />
     </div>
   )
+}
+
+Language.propTypes = {
+  title: propTypes.string,
+  description: propTypes.string,
+}
+
+Language.defaultProps = {
+  title: '',
+  description: ''
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import propTypes from 'prop-types'
+import propTypes from 'prop-types'
 
-import LanguageList from '../LanguageList'
+import LanguageList from '../../atoms/LanguageList'
 import styles from './index.css'
 
 class Language extends Component {
@@ -25,6 +25,17 @@ class Language extends Component {
       </div>
     )
   }
+}
+
+Language.propTypes = {
+  createList: propTypes.array, 
+  change: propTypes.func.isRequired, 
+  addInput: propTypes.func.isRequired, 
+  deleteInput: propTypes.func.isRequired, 
+}
+
+Language.defaultProps = {
+  createList: []
 }
 
 export default Language

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-// import propTypes from 'prop-types'
+import propTypes from 'prop-types'
 
 import styles from './index.css'
-import InputCreate from '../../atoms/InputCreate'
+import Input from '../../atoms/Input'
 
 class LanguageList extends Component {
 
@@ -13,7 +13,7 @@ class LanguageList extends Component {
       <div className = { styles.education }>
       <h1>Укажите языки, которыми владеете</h1>
       
-      <InputCreate 
+      <Input 
         typeInput="text" 
         className = { styles.input } 
         value = { createList.title }
@@ -21,7 +21,7 @@ class LanguageList extends Component {
         updateField = { e => change(['language', index, 'title'], e.target.value ) }/>
 
       <p>Укажите уровень владения языком</p>
-      <InputCreate 
+      <Input 
         typeInput="text" 
         className = { styles.input } 
         value = { createList.description }
@@ -32,5 +32,14 @@ class LanguageList extends Component {
   }
 }
 
+LanguageList.propTypes = {
+  createList: propTypes.object, 
+  change: propTypes.func.isRequired, 
+  index: propTypes.number.isRequired, 
+}
+
+LanguageList.defaultProps = {
+  createList: {}
+}
 
 export default LanguageList

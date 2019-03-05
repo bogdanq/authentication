@@ -2,7 +2,6 @@ import * as types from './types'
 
 const initialState = {
   user: {},
-  authord: false,
   loading: true,
   authError: ''
 }
@@ -11,8 +10,7 @@ export default function reducer(state = initialState, action) {
   switch(action.type) {
     case types.SIGN_UP: 
       return {
-        ...state,
-        authord: true
+        ...state
       }
 
     case types.SIGN_UP_SUCCESS: 
@@ -23,7 +21,7 @@ export default function reducer(state = initialState, action) {
     case types.SIGN_IN: 
       return {
         ...state,
-        authError: ''
+        authError: '',
       }
 
     case types.SIGN_IN_SUCCESS: 
@@ -48,7 +46,6 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
-        authord: true,
         loading: false
       }
     case types.GET_USER: 

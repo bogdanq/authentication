@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import propTypes from 'prop-types'
+import propTypes from 'prop-types'
 import styles from './index.css'
-import EducationList from '../EducationList'
+import EducationList from '../../atoms/EducationList'
 
 
 class Education extends Component {
@@ -25,6 +25,17 @@ class Education extends Component {
       </div>
     )
   }
+}
+
+Education.propTypes = {
+  createList: propTypes.array, 
+  change: propTypes.func.isRequired, 
+  addInput: propTypes.func.isRequired, 
+  deleteInput: propTypes.func.isRequired, 
+}
+
+Education.defaultProps = {
+  createList: []
 }
 
 export default Education
