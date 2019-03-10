@@ -11,15 +11,9 @@ export default function History({ list }) {
         </p>
       </div>
       <div className={styles.company}>
-        <p className={styles.companyP}>
-          {list.companyName}
-        </p>
-        <p className={styles.companyP}>
-          {list.title}
-        </p>
-        <p>
-          {list.description}
-        </p>
+        <p className={styles.companyP}>{list.companyName}</p>
+        <p className={styles.companyP}>{list.title}</p>
+        <p>{list.description}</p>
       </div>
     </div>
   );

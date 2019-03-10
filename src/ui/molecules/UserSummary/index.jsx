@@ -39,10 +39,7 @@ class UserSummary extends Component {
           )}
         </h1>
         {list.history.map((item, id) => (
-          <History
-            key={id}
-            list={item}
-          />
+          <History key={id} list={item} />
         ))}
 
         <h1 className={styles.ourH1}>
@@ -54,7 +51,7 @@ class UserSummary extends Component {
           )}
         </h1>
         {list.education.map((item, id) => (
-          <Education key={id} list = {item} />
+          <Education key={id} list={item} />
         ))}
 
         <h1 className={styles.ourH1}>
@@ -66,10 +63,7 @@ class UserSummary extends Component {
           )}
         </h1>
         {list.language.map((item, id) => (
-          <Language
-            key={id}
-            list = {item}
-          />
+          <Language key={id} list={item} />
         ))}
         <h1 className={styles.ourH1}>
           Скилы
@@ -79,9 +73,11 @@ class UserSummary extends Component {
             </span>
           )}
         </h1>
-        <div className = {styles.tags}>{list.tags.split(',').map(item =>
-          <p>{item}</p>
-        )}</div>
+        <div className={styles.tags}>
+          {list.tags.split(",").map(item => (
+            <p>{item}</p>
+          ))}
+        </div>
       </div>
     );
   }

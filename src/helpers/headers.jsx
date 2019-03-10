@@ -1,15 +1,15 @@
-import cookies from 'browser-cookies'
+import cookies from "browser-cookies";
 
 export default {
   headers: {
-    'Authorization': cookies.get('token')
+    Authorization: cookies.get("token")
   }
-}
+};
 
 export function UserEmail(email) {
   return {
     headers: {
-      'Authorization': email
+      Authorization: email
     }
-  }
+  };
 }

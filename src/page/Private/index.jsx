@@ -77,7 +77,7 @@ const mapStateToProps = state => ({
   userPrivateSummary: state.user.userPrivateSummary,
   isLoading: state.user.isLoading,
   user: state.auth.user,
-  status: state.summary.status,
+  status: state.summary.status
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -14,7 +14,16 @@ import history from "./helpers/history";
 
 import * as actions from "./redux/auth/actions";
 
-const { Home, SignIn, SignUp, Private, SummaryList, CreateSummary, Vacanci, UpdateSummary } = components;
+const {
+  Home,
+  SignIn,
+  SignUp,
+  Private,
+  SummaryList,
+  CreateSummary,
+  Vacanci,
+  UpdateSummary
+} = components;
 
 class App extends Component {
   componentDidMount() {

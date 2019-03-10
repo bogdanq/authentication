@@ -5,8 +5,8 @@ import propTypes from "prop-types";
 export default function Language({ list }) {
   return (
     <div className={styles.body}>
-      <p className = {styles.title}>{list.title}</p>
-      <p className = {styles.description}>{list.description}</p>
+      <p className={styles.title}>{list.title}</p>
+      <p className={styles.description}>{list.description}</p>
     </div>
   );
 }

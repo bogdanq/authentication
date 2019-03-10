@@ -36,7 +36,7 @@ class SignUp extends Component {
               text="Логин"
               typeInput="text"
               value={inputLogin.value}
-              updateField={e => this.updateInput('inputLogin', e.target.value)}
+              updateField={e => this.updateInput("inputLogin", e.target.value)}
               placeholder="login"
               error={inputLogin.error}
             />
@@ -45,7 +45,7 @@ class SignUp extends Component {
               text="Пароль"
               typeInput="text"
               value={inputPass.value}
-              updateField={e => this.updateInput('inputPass', e.target.value)}
+              updateField={e => this.updateInput("inputPass", e.target.value)}
               placeholder="password"
               error={inputPass.error}
             />
@@ -54,7 +54,7 @@ class SignUp extends Component {
               text="Введите имя"
               typeInput="text"
               value={inputName.value}
-              updateField={e => this.updateInput('inputName', e.target.value)}
+              updateField={e => this.updateInput("inputName", e.target.value)}
               placeholder="Name"
               error={inputName.error}
             />
@@ -63,7 +63,7 @@ class SignUp extends Component {
               text="Введите фамилию"
               typeInput="text"
               value={inputLast.value}
-              updateField={e => this.updateInput('inputLast', e.target.value)}
+              updateField={e => this.updateInput("inputLast", e.target.value)}
               placeholder="last name"
               error={inputLast.error}
             />
@@ -84,14 +84,19 @@ class SignUp extends Component {
     const { inputLogin, inputPass, inputName, inputLast } = this.state;
     e.preventDefault();
 
-    this.props.actions.signUp(inputLogin.value, inputPass.value, inputName.value, inputLast.value);
+    this.props.actions.signUp(
+      inputLogin.value,
+      inputPass.value,
+      inputName.value,
+      inputLast.value
+    );
   };
 
   updateInput = (name, value) => {
     this.setState({
       [name]: { ...this.state[name], value: value }
     });
-  }
+  };
 }
 
 SignUp.propTypes = {
@@ -107,7 +112,7 @@ SignUp.defaultProps = {
 
 const mapStateToProps = state => ({
   isLoad: state.auth.isLoad,
-  authError: state.auth.authError,
+  authError: state.auth.authError
 });
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)

@@ -38,14 +38,18 @@ class SignIn extends Component {
                   typeInput="text"
                   placeholder="учебное заведение"
                   value={inputLogin.value}
-                  updateField={e => this.updateInput('inputLogin', e.target.value)}
+                  updateField={e =>
+                    this.updateInput("inputLogin", e.target.value)
+                  }
                 />
 
                 <Input
                   text="Пароль"
                   typeInput="text"
                   value={inputPass.value}
-                  updateField={e => this.updateInput('inputPass', e.target.value)}
+                  updateField={e =>
+                    this.updateInput("inputPass", e.target.value)
+                  }
                   placeholder="password"
                   error={inputPass.error}
                 />
@@ -72,7 +76,7 @@ class SignIn extends Component {
     this.setState({
       [name]: { ...this.state[name], value: value }
     });
-  }
+  };
 
   submit = e => {
     const { inputLogin, inputPass } = this.state;

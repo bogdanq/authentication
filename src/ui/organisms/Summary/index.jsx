@@ -7,9 +7,17 @@ import * as actions from "../../../redux/summary/actions";
 import styles from "./index.css";
 
 class Summary extends Component {
-
   render() {
-    const { user, date,  title, description, email, id, status, actions} = this.props
+    const {
+      user,
+      date,
+      title,
+      description,
+      email,
+      id,
+      status,
+      actions
+    } = this.props;
 
     return (
       <div className={styles.summary}>
@@ -28,7 +36,7 @@ class Summary extends Component {
           </button>
         )}
       </div>
-    )
+    );
   }
 }
 

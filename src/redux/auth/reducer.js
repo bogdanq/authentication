@@ -1,77 +1,78 @@
-import * as types from './types'
+import * as types from "./types";
 
 const initialState = {
   user: {},
   loading: true,
-  authError: '',
+  authError: "",
   isLoad: false
-}
+};
 
 export default function reducer(state = initialState, action) {
-  switch(action.type) {
-    case types.SIGN_UP: 
+  switch (action.type) {
+    case types.SIGN_UP:
       return {
         ...state,
-        authError: '',
-      }
+        authError: ""
+      };
 
-    case types.SIGN_UP_SUCCESS: 
+    case types.SIGN_UP_SUCCESS:
       return {
         ...state
-      }
+      };
 
-    case types.SIGN_UP_ERROR: 
+    case types.SIGN_UP_ERROR:
       return {
         ...state,
-        authError: 'Логин занят',
-      }
+        authError: "Логин занят"
+      };
 
-    case types.SIGN_IN: 
+    case types.SIGN_IN:
       return {
         ...state,
-        authError: '',
+        authError: "",
         isLoad: true
-      }
+      };
 
-    case types.SIGN_IN_SUCCESS: 
+    case types.SIGN_IN_SUCCESS:
       return {
         ...state,
         user: action.payload.data,
-        authError: '',
+        authError: "",
         isLoad: false
-      }
+      };
 
-    case types.SIGN_IN_ERROR: 
+    case types.SIGN_IN_ERROR:
       return {
         ...state,
-        authError: 'Неверный логин или пароль',
+        authError: "Неверный логин или пароль",
         isLoad: false
-      }
-        
-    case types.LOG_OUT: 
-      return {
-        ...state          
-      }
+      };
 
-    case types.GET_USER_SUCCESS: 
+    case types.LOG_OUT:
+      return {
+        ...state
+      };
+
+    case types.GET_USER_SUCCESS:
       return {
         ...state,
         user: action.payload,
         loading: false
-      }
-    case types.GET_USER: 
+      };
+    case types.GET_USER:
       return {
         ...state,
         user: {}
-      }
+      };
 
-    case types.GET_USER_ERROR: 
+    case types.GET_USER_ERROR:
       return {
         ...state,
         user: {},
         loading: false
-      }
+      };
 
-    default: return state
+    default:
+      return state;
   }
 }
