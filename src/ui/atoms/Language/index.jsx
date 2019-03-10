@@ -1,23 +1,20 @@
-import React from 'react'
-import styles from './index.css'
-import propTypes from 'prop-types'
+import React from "react";
+import styles from "./index.css";
+import propTypes from "prop-types";
 
-export default function Language({ title, description }) {
+export default function Language({ list }) {
   return (
-    <div className = { styles.body }>
-      <p>{ title }</p>
-      <p>Уровень знаний: { description }</p>
-      <hr />
+    <div className={styles.body}>
+      <p className = {styles.title}>{list.title}</p>
+      <p className = {styles.description}>{list.description}</p>
     </div>
-  )
+  );
 }
 
 Language.propTypes = {
-  title: propTypes.string,
-  description: propTypes.string,
-}
+  list: propTypes.object
+};
 
 Language.defaultProps = {
-  title: '',
-  description: ''
-}
+  list: {}
+};

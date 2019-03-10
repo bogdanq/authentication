@@ -47,7 +47,7 @@
   color: rgb(141, 141, 141)
 }
 
-.log button {
+.logButton, .load {
   width: 65%;
   margin: 0 auto;
   border-radius: 5px;
@@ -61,6 +61,19 @@
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
+.load {
+  background: rgba(255,255,255,1);
+  transition: color .3s, background .5s;
+  animation: stripes .75s infinite;
+  background: linear-gradient(45deg, rgb(152,15,0) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 50%, rgb(152,15,0) 50%,      rgb(152,15,0) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1));
+  background-size: 10px 10px;
+  color: transparent
+}
+
+@keyframes stripes {
+  0% {background-position: 0 0;}
+  100% {background-position: 50px 0;}
+}
 
 .err {
   color: red;
@@ -69,4 +82,30 @@
 
 .signin {
   padding-bottom: 300px;
+}
+
+.load {
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+  width: 65%;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.load {
+  background: rgba(255,255,255,1);
+  transition: color .3s, background .5s;
+  animation: stripes .75s infinite;
+  background: linear-gradient(45deg, rgb(152,15,0) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 50%, rgb(152,15,0) 50%,      rgb(152,15,0) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1));
+  background-size: 10px 10px;
+  color: transparent
+}
+
+@keyframes stripes {
+  0% {background-position: 0 0;}
+  100% {background-position: 50px 0;}
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-// import propTypes from 'prop-types'
 
 import CreateSummaryParent from '../../ui/organisms/CreateSummaryParent'
 import styles from './index.css'

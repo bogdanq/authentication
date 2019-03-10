@@ -1,15 +1,15 @@
-import axios from 'axios'
-import cookies from 'browser-cookies'
+import axios from "axios";
+import cookies from "browser-cookies";
 
-import * as types from './types'
-import headers from '../../helpers/headers'
-import Request from '../../helpers/Request'
+import * as types from "./types";
+import headers from "../../helpers/headers";
+import Request from "../../helpers/Request";
 
-const BASE_PATH = 'http://localhost:8080/'
-const USERS = 'users'
-const baseUrl = `${BASE_PATH}${USERS}`
+const BASE_PATH = "http://localhost:8080/";
+const USERS = "users";
+const baseUrl = `${BASE_PATH}${USERS}`;
 
-export const signUp = (email, password, firstName, lastName ) => ({
+export const signUp = (email, password, firstName, lastName) => ({
   type: types.SIGN_UP,
   promise: axios.post(`${baseUrl}/signup`, {
     email,
@@ -17,21 +17,21 @@ export const signUp = (email, password, firstName, lastName ) => ({
     firstName,
     lastName
   })
-})
+});
 
-export const signIn = (email, pass) => ({
+export const signIn = (email, password) => ({
   type: types.SIGN_IN,
   promise: axios.post(`${baseUrl}/signin`, {
-    email: email,
-    password: pass
+    email,
+    password
   })
-})
+});
 
 export const logOut = () => {
-  cookies.erase('token')
-}
+  cookies.erase("token");
+};
 
 export const getUser = () => ({
   type: types.GET_USER,
-  promise: Request.get('/users/current-user', headers)
-})
+  promise: Request.get("/users/current-user", headers)
+});

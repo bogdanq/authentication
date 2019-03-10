@@ -27,14 +27,7 @@ class SummaryList extends Component {
           userSummary.map((item, id) =>
             <UserSummary 
               key = { id }
-              title = { item.title }
-              description = { item.description }
-              history = { item.history }
-              tags = { item.tags }
-              education = { item.education }
-              language = { item.language }
-              phone = { item.phone }
-              userEmail = { item.userEmail }
+              list = { item }
               userId = { user.email }
               id = { match.params.id }/>
           )

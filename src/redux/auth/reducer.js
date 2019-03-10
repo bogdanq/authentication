@@ -3,14 +3,16 @@ import * as types from './types'
 const initialState = {
   user: {},
   loading: true,
-  authError: ''
+  authError: '',
+  isLoad: false
 }
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case types.SIGN_UP: 
       return {
-        ...state
+        ...state,
+        authError: '',
       }
 
     case types.SIGN_UP_SUCCESS: 
@@ -18,23 +20,32 @@ export default function reducer(state = initialState, action) {
         ...state
       }
 
+    case types.SIGN_UP_ERROR: 
+      return {
+        ...state,
+        authError: 'Логин занят',
+      }
+
     case types.SIGN_IN: 
       return {
         ...state,
         authError: '',
+        isLoad: true
       }
 
     case types.SIGN_IN_SUCCESS: 
       return {
         ...state,
         user: action.payload.data,
-        authError: ''
+        authError: '',
+        isLoad: false
       }
 
     case types.SIGN_IN_ERROR: 
       return {
         ...state,
-        authError: 'Неверный логин или пароль'
+        authError: 'Неверный логин или пароль',
+        isLoad: false
       }
         
     case types.LOG_OUT: 

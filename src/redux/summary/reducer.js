@@ -1,12 +1,11 @@
 import * as types from './types'
-import history from '../../helpers/history'
 
 const initialState = {
   summarysList: [],
   userSummary: [],
   loadSummary: true,
   isLoadUser: true,
-  status: false
+  status: null
 }
 
 export default function reducer(state = initialState, action) {
@@ -49,17 +48,20 @@ export default function reducer(state = initialState, action) {
     case types.DELETE_SUMMARY: 
       return {
         ...state,
+        status: action.payload
       }
     
     case types.DELETE_SUMMARY_SUCCESS: 
       return {
         ...state,
-        summarysList: [...state.summarysList].filter(obj => obj._id !== action.payload.id)
+        summarysList: [...state.summarysList].filter(obj => obj._id !== action.payload.id),
+        status: null
       }
 
     case types.DELETE_SUMMARY_ERROR: 
       return {
-        ...state
+        ...state,
+        status: null
       }
     case types.POST_SUMMARY:
       return {
@@ -68,7 +70,6 @@ export default function reducer(state = initialState, action) {
       }
 
     case types.POST_SUMMARY_SUCCESS:
-      history.goBack()
       return {
         ...state,
         status: false
@@ -89,14 +90,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
       }
-        
 
     case types.RESET_LOADING:
       return {
         ...state,
         isLoadUser: true,
       }
-    
     
     default:  return state
   }

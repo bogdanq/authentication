@@ -2,24 +2,21 @@ import React from 'react'
 import styles from './index.css'
 import propTypes from 'prop-types'
 
-function Education({ year, institution }) {
+function Education({ list }) {
   return (
     <div className = { styles.body }>
-      <p>{ year }</p>
-      <p>Учебное заведение: { institution }</p>
-      <hr />
+      <p className = { styles.year }>{ list.year }</p>
+      <p className = { styles.institution }> { list.institution }</p>
     </div>
   )  
 }
 
 Education.propTypes = {
-  year: propTypes.string,
-  institution: propTypes.string,
+  list: propTypes.object
 }
 
 Education.defaultProps = {
-  year: '',
-  institution: ''
+  list: {}
 }
 
 export default Education

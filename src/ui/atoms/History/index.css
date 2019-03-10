@@ -1,9 +1,23 @@
 .body p {
-  font-size: 25px;
+  font-size: 16px;
   line-height: 1.3;
-  margin-bottom: 25px;
+}
+.companyP {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.body p span {
-  color: rgb(90, 90, 90) !important;
+.body {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.company {
+  margin-left: 25px;
+  text-align: left;
+}
+
+.date {
+  width: 150px
 }

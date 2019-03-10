@@ -1,31 +1,34 @@
-import React from 'react'
-import styles from './index.css'
-import propTypes from 'prop-types'
+import React from "react";
+import styles from "./index.css";
+import propTypes from "prop-types";
 
-export default function History({ company, title, description, startDate, endDate }) {
+export default function History({ list }) {
   return (
-    <div className = { styles.body }>
-      <p>Название компании: <span>{ company }</span></p>
-      <p>Должность: <span>{ title }</span></p>
-      <p>Описание: <span>{ description }</span></p>
-      <p>Начало работы { startDate } <span>Конец { endDate }</span></p>
-      <hr />
+    <div className={styles.body}>
+      <div className={styles.date}>
+        <p>
+          {list.startDate} - {list.endDate}
+        </p>
+      </div>
+      <div className={styles.company}>
+        <p className={styles.companyP}>
+          {list.companyName}
+        </p>
+        <p className={styles.companyP}>
+          {list.title}
+        </p>
+        <p>
+          {list.description}
+        </p>
+      </div>
     </div>
-  )
+  );
 }
 
 History.propTypes = {
-  company: propTypes.string, 
-  title: propTypes.string, 
-  description: propTypes.string, 
-  startDate: propTypes.string, 
-  endDate: propTypes.string
-}
+  list: propTypes.object
+};
 
 History.defaultProps = {
-  company: '', 
-  title: '', 
-  description: '', 
-  startDate: '', 
-  endDate: ''
-}
+  list: {}
+};

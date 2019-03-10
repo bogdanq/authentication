@@ -46,15 +46,14 @@ function withForm(BaseComponent) {
       )
     }
 
-    updateFields = async (path, value) => {
-      await this.setState(prev => ({
+    updateFields = (path, value) => {
+      this.setState(prev => ({
         ...prev,
         ...R.assocPath(path, value, prev)
       }))
     }
 
     addInput = name => {
-      
       let obj = {}
       this.setState({
         [name]: [...this.state[name], obj]

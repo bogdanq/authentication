@@ -21,3 +21,7 @@
   font-family: 'Open sans';
   margin: 10px 50px
 }
+
+.menuLink:hover {
+  color: #7f3cba
+}

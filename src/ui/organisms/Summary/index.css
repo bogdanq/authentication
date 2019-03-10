@@ -1,41 +1,56 @@
 .summary {
-  width: 750px;
+  width: 70%;
   margin: 0 auto;
-  padding-bottom: 25px;
-  margin-top: 80px;
-  border-bottom: 1px solid rgb(131, 176, 185);
   position: relative;
   z-index: 0;
-  height: 200px;
-  overflow: hidden
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  padding: 30px 25px
 }
 
 .more {
-  display: block;
+  display: inline-block;
   text-align: center;
   line-height: 2.3;
+  font-size: 14px;
   border: none;
   background: none;
   outline: none;
-  border: 1px solid rgb(131, 176, 185);
+  border: none;
   height: 40px;
   width: 90px;
   cursor: pointer;
-  color: #000
+  color: #000;
+  margin-top: 50px;
+  padding: 0 15px;
+  font-family: 'Open Sans';
+  color: #609fcf
+}
+.more:hover {
+  color: #7f3cba
 }
 
-.delete {
+.delete, .load {
   border: none;
   background: none;
   outline: none;
-  background: red;
-  color: #fff;
+  border: 1px solid #e7e7e7;
+  color: #000;
   height: 30px;
   width: 30px;
   cursor: pointer;
   position: absolute;
-  right: 0;
-  top: 0
+  right: 2%;
+  top: 0;
+}
+
+.load {
+  background: rgba(255,255,255,1);
+  transition: color .3s, background .5s;
+  animation: stripes .75s infinite;
+  background: linear-gradient(45deg, rgb(152,15,0) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 50%, rgb(152,15,0) 50%,      rgb(152,15,0) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1));
+  background-size: 10px 10px;
+  color: transparent
 }
 
 .edit {
@@ -57,20 +72,7 @@
   font-family: 'Open Sans';
   font-weight: 400;
   line-height: 1.4;
-  padding-left: 20%;
-  position: relative;
-  width: 67%;
-  height: 85px
-}
-
-.summary p:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(rgba(255, 255, 255, 0.521), rgb(255, 255, 255))
+  text-align: left
 }
 
 .summary h4 {
@@ -87,12 +89,18 @@
 .summary h2 {
   font-family: 'Roboto';
   font-size: 25px;
-  color: rgb(0, 0, 0)
+  color: #09f
 }
-
 
 .summary h3 {
   font-family: 'Open Sans';
   font-size: 17px;
   margin: 15px 0
+}
+
+
+
+@keyframes stripes {
+  0% {background-position: 0 0;}
+  100% {background-position: 50px 0;}
 }
