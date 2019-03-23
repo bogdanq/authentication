@@ -7,6 +7,7 @@ import * as actions from "../../redux/summary/actions";
 
 import UserSummary from "../../ui/molecules/UserSummary";
 import Loader from "../../ui/atoms/Loader";
+import { getFavorite } from './selector'
 
 class SummaryList extends Component {
   componentDidMount() {
@@ -17,7 +18,6 @@ class SummaryList extends Component {
 
   render() {
     const { userSummary, isLoadUser, user, match } = this.props;
-    console.log("summaryList", isLoadUser);
     return isLoadUser ? (
       <Loader />
     ) : (
@@ -49,7 +49,7 @@ SummaryList.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  userSummary: state.summary.userSummary,
+  userSummary: getFavorite(state.summary.userSummary, state.auth.user),
   isLoadUser: state.summary.isLoadUser,
   user: state.auth.user
 });

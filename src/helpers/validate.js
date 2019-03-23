@@ -7,7 +7,7 @@ export const validate = (value, fields) => {
     case 2:
       return equality(fields.language);
     case 3:
-      return equality(fields.history);
+      return false;
     case 4:
       return equalityTitle(fields.phone, fields.tags);
 

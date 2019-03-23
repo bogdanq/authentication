@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 
 export default function TabContainer({ children, dir }) {
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography component="div" dir={dir}>
       {children}
     </Typography>
   );
@@ -13,4 +13,4 @@ export default function TabContainer({ children, dir }) {
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
   dir: PropTypes.string.isRequired
-}ы;
+};

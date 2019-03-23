@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 import cookies from "browser-cookies";
 import reducers from "../redux";
 

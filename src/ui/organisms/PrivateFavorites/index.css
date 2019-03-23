@@ -6,6 +6,12 @@
   font-family: 'Open sans';
   font-size: 35px
 }
-.page1 {
-  height: auto
+
+.body {
+  height: 800px
+}
+
+.privateH2 {
+  color: rgb(124, 124, 124);
+  margin: 10px 50px
 }

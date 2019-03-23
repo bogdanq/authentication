@@ -14,8 +14,8 @@ function withForm(BaseComponent) {
           companyName: "",
           title: "",
           description: "",
-          startDate: "",
-          endDate: ""
+          startDate: new Date(),
+          endDate: new Date()
         }
       ],
       education: [{ institution: "", year: "" }],

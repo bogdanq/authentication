@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
+
 import components from "../../atoms";
+import ActionPanel from "../../organisms/ActionPanel";
 import styles from "./index.css";
 
 class UserSummary extends Component {
@@ -12,6 +14,7 @@ class UserSummary extends Component {
 
     return (
       <div className={styles.body}>
+        <ActionPanel list={list}/>
         <h1 className={styles.bodyH1}>{list.title}</h1>
         <p className={styles.phone}>
           Електронная почта: <span>{list.userEmail}</span>
@@ -74,8 +77,8 @@ class UserSummary extends Component {
           )}
         </h1>
         <div className={styles.tags}>
-          {list.tags.split(",").map(item => (
-            <p>{item}</p>
+          {list.tags.split(",").map((item, id) => (
+            <p key={id}>{item}</p>
           ))}
         </div>
       </div>

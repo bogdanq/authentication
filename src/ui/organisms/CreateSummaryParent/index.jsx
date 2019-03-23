@@ -15,7 +15,7 @@ import * as actions from "../../../redux/summary/actions";
 
 class CreateSummaryParent extends React.Component {
   state = {
-    value: 0,
+    value: 3,
     update: false
   };
 
@@ -52,7 +52,9 @@ class CreateSummaryParent extends React.Component {
       match,
       status
     } = this.props;
+    
     const { value, update } = this.state;
+
     const {
       DescriptionSummary,
       Education,
@@ -183,7 +185,6 @@ CreateSummaryParent.propTypes = {
   deleteInput: propTypes.func.isRequired,
   actions: propTypes.object,
   match: propTypes.object,
-  status: propTypes.bool
 };
 
 CreateSummaryParent.defaultProps = {
@@ -191,7 +192,6 @@ CreateSummaryParent.defaultProps = {
   summary: {},
   actions: {},
   match: {},
-  status: false
 };
 
 const mapStateToProps = state => ({

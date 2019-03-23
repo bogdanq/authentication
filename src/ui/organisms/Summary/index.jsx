@@ -2,48 +2,47 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { NavLink } from "react-router-dom";
+import momentJs from "../../../helpers/moment";
+import ActionPanel from "../ActionPanel";
+import propType from "prop-types";
+
+
 import * as actions from "../../../redux/summary/actions";
+import * as actionsUser from "../../../redux/auth/actions";
 
 import styles from "./index.css";
 
 class Summary extends Component {
   render() {
-    const {
-      user,
-      date,
-      title,
-      description,
-      email,
-      id,
-      status,
-      actions
-    } = this.props;
+    const { list } = this.props;
 
     return (
       <div className={styles.summary}>
-        <h2>{title}</h2>
-        <h3>{date}</h3>
-        <p>{description}</p>
-        <NavLink to={`/summary-user/${id}`} className={styles.more}>
+        <h2>{list.title}</h2>
+        <h3>{momentJs(list.createdAt)}</h3>
+        <p>{list.description}</p>
+        <NavLink to={`/summary-user/${list._id}`} className={styles.moreBtn}>
           Смотреть
         </NavLink>
-        {user.email === email && (
-          <button
-            className={status === id ? styles.load : styles.delete}
-            onClick={() => actions.deleteSummary(id)}
-          >
-            X
-          </button>
-        )}
+
+        <ActionPanel list={list} />
       </div>
     );
   }
 }
 
+Summary.propType = {
+  user: propType.object.isRequired,
+  actionsUser: propType.object.isRequired,
+  actions: propType.object.isRequired
+}
+
 const mapStateToProps = state => ({
   user: state.auth.user
 });
+
 const mapDispatchToProps = dispatch => ({
+  actionsUser: bindActionCreators(actionsUser, dispatch),
   actions: bindActionCreators(actions, dispatch)
 });
 

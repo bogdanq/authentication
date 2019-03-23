@@ -11,3 +11,8 @@ export const getUserSummary = email => ({
   type: types.GET_USER_SUMMARY,
   promise: axios.get(`${baseUrl}/summaries`, UserEmail(email))
 })
+
+export const getSummaryFavorites = arr => ({
+  type: types.GET_FAVORITE,
+  promise: axios.put(`${baseUrl}/getSummary`, arr)
+})

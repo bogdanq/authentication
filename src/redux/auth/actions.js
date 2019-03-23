@@ -3,6 +3,7 @@ import cookies from "browser-cookies";
 
 import * as types from "./types";
 import headers from "../../helpers/headers";
+import { UserEmail } from "../../helpers/headers";
 import Request from "../../helpers/Request";
 
 const BASE_PATH = "http://localhost:8080/";
@@ -35,3 +36,23 @@ export const getUser = () => ({
   type: types.GET_USER,
   promise: Request.get("/users/current-user", headers)
 });
+
+export const toggleFavorite = (id, email) => dispatch => {
+  dispatch({
+    type: types.TOGGLE_FAVORITE
+  });
+
+  axios.put(`${baseUrl}/favoriteSummary`, { id: id }, UserEmail(email)).then(
+    res => {
+      dispatch({
+        type: types.TOGGLE_FAVORITE_SUCCESS,
+        payload: id
+      });
+    },
+    err => {
+      dispatch({
+        type: types.TOGGLE_FAVORITE_ERROR
+      });
+    }
+  );
+};

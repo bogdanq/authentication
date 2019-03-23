@@ -7,67 +7,6 @@
   border: 1px solid #e7e7e7;
   padding: 30px 25px
 }
-
-.more {
-  display: inline-block;
-  text-align: center;
-  line-height: 2.3;
-  font-size: 14px;
-  border: none;
-  background: none;
-  outline: none;
-  border: none;
-  height: 40px;
-  width: 90px;
-  cursor: pointer;
-  color: #000;
-  margin-top: 50px;
-  padding: 0 15px;
-  font-family: 'Open Sans';
-  color: #609fcf
-}
-.more:hover {
-  color: #7f3cba
-}
-
-.delete, .load {
-  border: none;
-  background: none;
-  outline: none;
-  border: 1px solid #e7e7e7;
-  color: #000;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  position: absolute;
-  right: 2%;
-  top: 0;
-}
-
-.load {
-  background: rgba(255,255,255,1);
-  transition: color .3s, background .5s;
-  animation: stripes .75s infinite;
-  background: linear-gradient(45deg, rgb(152,15,0) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 50%, rgb(152,15,0) 50%,      rgb(152,15,0) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1));
-  background-size: 10px 10px;
-  color: transparent
-}
-
-.edit {
-  border: none;
-  background: none;
-  outline: none;
-  background: blue;
-  color: #fff;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 50px
-}
-
-
 .summary p {
   font-family: 'Open Sans';
   font-weight: 400;
@@ -98,9 +37,26 @@
   margin: 15px 0
 }
 
-
-
-@keyframes stripes {
-  0% {background-position: 0 0;}
-  100% {background-position: 50px 0;}
+.moreBtn {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  background: none;
+  outline: none;
+  border: 1px solid #e7e7e7;
+  height: 40px;
+  cursor: pointer;
+  color: #000;
+  margin-top: 50px;
+  font-family: 'Open Sans';
+  color: #609fcf;
+  margin-right: 30px;
+  padding: 0 20px
+}
+.moreBtn:hover {
+  color: #7f3cba
+}
+.moreBtn {
+  line-height: 40px;
 }

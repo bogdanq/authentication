@@ -19,7 +19,7 @@ class SignUp extends Component {
 
   render() {
     const { inputLogin, inputPass, inputLast, inputName } = this.state;
-    const { actions, isLoad, authError } = this.props;
+    const { isLoad } = this.props;
     const text = "Пройдите удобную, пошаговую и быструю регистрацию";
 
     return (

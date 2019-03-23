@@ -7,7 +7,7 @@ import styles from "./index.css";
 class Historys extends Component {
   render() {
     const { createList, change, addInput, deleteInput } = this.props;
-
+    
     return (
       <Fragment>
         {createList.map((item, id) => (

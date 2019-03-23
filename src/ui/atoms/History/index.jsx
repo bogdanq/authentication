@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./index.css";
 import propTypes from "prop-types";
+import momentJs from '../../../helpers/moment'
 
 export default function History({ list }) {
   return (
     <div className={styles.body}>
       <div className={styles.date}>
         <p>
-          {list.startDate} - {list.endDate}
+          C {momentJs(list.startDate)} <br /><br /> до {momentJs(list.endDate)}
         </p>
       </div>
       <div className={styles.company}>
