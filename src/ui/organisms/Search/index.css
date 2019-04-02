@@ -31,3 +31,29 @@
   cursor: pointer;
   padding: 0 15px
 }
+
+.searchArea {
+  width: 63%;
+  padding-bottom: 0px;
+  background: #fff;
+  margin: 0 auto;
+  transform: translate(-50px, -10px);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  text-align: left
+}
+
+.searchArea a {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  color: #000;
+  font-size: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+
+.searchArea a:hover {
+  background: red
+}

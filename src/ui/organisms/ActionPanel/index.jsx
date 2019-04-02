@@ -11,7 +11,7 @@ import * as actions from "../../../redux/summary/actions";
 import * as actionsUser from "../../../redux/auth/actions";
 
 const ActionPanel = ({ list, status, user, actions, actionsUser }) => {
-  console.log(status)
+  
   return (
     <div className={styles.action}>
       {user.email === list.userEmail && (
@@ -33,7 +33,7 @@ const ActionPanel = ({ list, status, user, actions, actionsUser }) => {
       <Button
         style={styles.comments}
         // change={() => favorite()}
-        text="1"
+        text={list.comments.length}
       />
     </div>
   );

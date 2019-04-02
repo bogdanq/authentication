@@ -1,0 +1,24 @@
+.summary {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  padding: 30px 25px
+}
+.summary h2 {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.summary h3 {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+
+.summary p {
+  margin-bottom: 20px;
+  line-height: 2;
+}

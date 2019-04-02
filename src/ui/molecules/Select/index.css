@@ -1,0 +1,7 @@
+.select {
+  display: inline-block;
+  width: 90px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  transform: translateX(-40px)
+}

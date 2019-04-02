@@ -1,13 +1,30 @@
 .nextBtn {
-  display: block;
-  margin: 50px auto;
+  display: inline-block;
   border: none;
   background: none;
   outline: none;
   border: 1px solid rgb(131, 176, 185);
   height: 40px;
-  width: 150px;
+  width: 50px;
   cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+}
+.nextBtn a {
+  color: #000;
+  font-size: 20px
+}
+
+.ative {
+  background: #83b0b9;
+}
+
+.disabled {
+  background: red !important
+}
+
+.ative a {
+  color: #fff
 }
 
 .summary {
@@ -20,4 +37,11 @@
   font-size: 30px;
   margin-top: 20px;
   margin: 100px 80px;
+  display: inline-block;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
 }

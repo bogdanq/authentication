@@ -22,14 +22,11 @@ class SummaryList extends Component {
       <Loader />
     ) : (
       <div className="SummaryList">
-        {userSummary.map((item, id) => (
-          <UserSummary
-            key={id}
-            list={item}
-            userId={user.email}
-            id={match.params.id}
-          />
-        ))}
+        <UserSummary
+          list={userSummary}
+          userId={user.email}
+          id={match.params.id}
+        />
       </div>
     );
   }
@@ -37,13 +34,13 @@ class SummaryList extends Component {
 
 SummaryList.propTypes = {
   match: propTypes.object.isRequired,
-  userSummary: propTypes.array,
+  userSummary: propTypes.object,
   isLoadUser: propTypes.bool,
   user: propTypes.object
 };
 
 SummaryList.defaultProps = {
-  userSummary: [],
+  userSummary: {},
   isLoadUser: true,
   user: {}
 };

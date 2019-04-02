@@ -2,10 +2,12 @@ import React, { Fragment, Component } from "react";
 import propType from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import Pagination from "react-js-pagination";
 
 import Summary from "../../ui/organisms/Summary";
 import Preview from "../../ui/organisms/Preview";
-import Loader from "../../ui/atoms/Loader";
+import Select from "../../ui/molecules/Select";
+import Skelet from "../../ui/atoms/Skeleton";
 
 import { getFavorite } from './selector'
 
@@ -13,54 +15,96 @@ import styles from "./index.css";
 import * as actions from "../../redux/summary/actions";
 
 class Home extends Component {
+
   componentDidMount() {
-    const { getSummary } = this.props.actions;
-    getSummary();
+    const { actions, pagination, countElements, summarysList } = this.props;
+
+    if(summarysList.length === 0) {
+      actions.getSummary(pagination.page, countElements);
+    }
   }
 
   render() {
-    const { loadSummary, summarysList } = this.props;
-    const count = summarysList.length;
-    const text = "Мы найдем вам резюме на любой вкус по всей стране";
-
+    const { loadSummary, summarysList, pagination, countElements } = this.props;
+    const current_page = pagination.page
+    const pages = pagination.pages
+    console.log(typeof countElements)
     return (
       <Fragment>
-        <Preview color="#83b0b9" title="Просмотр резюме" description={text} />
+        <Preview color="#83b0b9" title="Просмотр резюме" description='Мы найдем вам резюме на любой вкус по всей стране' />
         {loadSummary ? (
-          <Loader />
+          <Skelet />
         ) : (
           <Fragment>
             <div className={styles.filter} />
-            <div className={styles.summary}>
-              <h1>Всего вакансий: {count}</h1>
-              {summarysList.map((item, id) => (
+            <div id="content" className={styles.summary}>
+              <h1>Показывать по:</h1>
+              <Select count={countElements} onHandlerSelect={(e) => this.handleChange(e)}/>
+            {summarysList.map((item, id) => (
                 <Summary key={id} list={item} email={undefined} />
               ))}
             </div>
-            <button className={styles.nextBtn}>Next</button>
+            
           </Fragment>
         )}
+
+          <div className={styles.pagination}>
+            <Pagination
+              hideDisabled
+              disabledClass={styles.disabled}
+              itemClass={styles.nextBtn}
+              activeClass={styles.ative}
+              activePage={current_page}
+              itemsCountPerPage={1}
+              totalItemsCount={pages}
+              onChange={this.handlePageChange}
+            />
+          </div>
       </Fragment>
     );
+  }
+
+  handlePageChange = (e) => {
+    const { actions, pagination, countElements } = this.props
+
+    if(e !== pagination.page) {
+      actions.getSummary(e, countElements)
+      window.scrollTo({
+        top: 800,
+      })
+    }
+  }
+
+  handleChange(e) {
+    const { actions } = this.props
+    
+    actions.getSummary(1, e.target.value)
+    actions.getCountElements(e.target.value)
   }
 }
 
 Home.propType = {
   summarysList: propType.array,
   loadSummary: propType.bool,
-  user: propType.array
+  user: propType.array,
+  pagination: propType.array,
+  countElements: propType.string
 };
 
 Home.defaultProps = {
   summarysList: [],
   loadSummary: true,
-  user: []
+  user: [],
+  pagination: [],
+  countElements: ''
 };
 
 const mapStateToProps = state => ({
   summarysList: getFavorite(state.summary.summarysList, state.auth.user),
   loadSummary: state.summary.loadSummary,
-  user: state.auth.user
+  user: state.auth.user,
+  pagination: state.summary.pagination,
+  countElements: state.summary.countElements
 });
 
 const mapDispatchToProps = dispatch => ({

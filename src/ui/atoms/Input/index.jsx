@@ -10,8 +10,9 @@ export default function Input({
   text,
   name,
   className,
-  nested,
-  id
+  placeholder,
+  onBlur,
+  onFocus
 }) {
   return (
     <Fragment>
@@ -23,6 +24,9 @@ export default function Input({
           value={value}
           onChange={updateField}
           name={name}
+          placeholder={placeholder}
+          onBlur={onBlur}
+          onFocus={onFocus}
         />
       ) : (
         <textarea
@@ -33,6 +37,7 @@ export default function Input({
           cols="50"
           rows="20"
           name={name}
+          placeholder={placeholder}
         />
       )}
     </Fragment>

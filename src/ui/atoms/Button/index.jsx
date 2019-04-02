@@ -8,12 +8,10 @@ const Button = ({ style, change, text }) => {
 Button.propTypes = {
   style: propTypes.string,
   change: propTypes.func,
-  text: propTypes.string
 };
 Button.defaultProps = {
   style: '',
   change: () => {},
-  text: ''
 };
 
 export default Button;

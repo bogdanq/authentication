@@ -78,13 +78,13 @@ function withForm(BaseComponent) {
     updateState = list => {
       this.setState(prev => ({
         ...prev.state,
-        title: list[0].title,
-        description: list[0].description,
-        phone: list[0].phone,
-        tags: list[0].tags,
-        history: list[0].history,
-        education: list[0].education,
-        language: list[0].language,
+        title: list.title,
+        description: list.description,
+        phone: list.phone,
+        tags: list.tags,
+        history: list.history,
+        education: list.education,
+        language: list.language,
         load: false
       }));
     };

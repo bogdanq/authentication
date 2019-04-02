@@ -2,10 +2,13 @@ import * as types from "./types";
 
 const initialState = {
   summarysList: [],
-  userSummary: [],
+  userSummary: {},
   loadSummary: true,
   isLoadUser: true,
-  status: null
+  status: null,
+  search: [],
+  pagination: [],
+  countElements: '5'
 };
 
 export default function reducer(state = initialState, action) {
@@ -13,14 +16,16 @@ export default function reducer(state = initialState, action) {
     case types.GET_SUMMARY:
       return {
         ...state,
-        isLoadUser: true
+        isLoadUser: true,
+        loadSummary: true
       };
 
     case types.GET_SUMMARY_SUCCESS:
       return {
         ...state,
         summarysList: action.payload.data,
-        loadSummary: false
+        loadSummary: false,
+        pagination: action.payload
       };
 
     case types.GET_SUMMARY_ERROR:
@@ -41,7 +46,7 @@ export default function reducer(state = initialState, action) {
     case types.GET_SUMMARY_BY_ID_SUCCESS:
       return {
         ...state,
-        userSummary: action.payload.summary.slice(),
+        userSummary: action.payload.summary,
         isLoadUser: false
       };
 
@@ -93,12 +98,74 @@ export default function reducer(state = initialState, action) {
         ...state
       };
 
+      
+    case types.PUT_COMMENT:
+      return {
+        ...state
+    };
+
+    case types.PUT_COMMENT_SUCCESS:
+      return {
+        ...state,
+        userSummary: {
+          ...state.userSummary,
+          comments: [...state.userSummary.comments, action.payload.data]
+        }
+    };
+
+    case types.DELETE_COMMENT:
+      return {
+        ...state,
+        status: action.payload
+    };
+
+    case types.DELETE_COMMENT_SUCCESS:
+      return {
+        ...state,
+        userSummary: {
+          ...state.userSummary,
+          comments: [...state.userSummary.comments].filter(
+            obj => obj._id !== action.payload.data
+          )
+        },
+        status: null
+    };
+    
+    case types.SEARCH_SUMMARY:
+      return {
+        ...state,
+    };
+
+    case types.SEARCH_SUMMARY_SUCCESS:
+      return {
+        ...state,
+        search: action.payload.data
+    };
+    
     case types.RESET_LOADING:
       return {
         ...state,
         isLoadUser: true
       };
+    
+    case types.SEARCH_LIST:
+      return {
+        ...state,
+        summarysList: state.search
+      };
 
+    case types.SEARCH_LIST_SUCCESS:
+      return {
+        ...state,
+        summarysList: state.search
+    };
+    
+    case types.GET_COUNT_ELEMENTS:
+      return {
+        ...state,
+        countElements: action.payload
+      }
+    
     default:
       return state;
   }

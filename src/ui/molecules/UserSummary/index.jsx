@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 import components from "../../atoms";
 import ActionPanel from "../../organisms/ActionPanel";
 import styles from "./index.css";
+import Comments from '../Comments'
 
 class UserSummary extends Component {
   render() {
     const { list, userId, id } = this.props;
     const { History, Education, Language } = components;
-
     return (
       <div className={styles.body}>
         <ActionPanel list={list}/>
@@ -81,6 +81,8 @@ class UserSummary extends Component {
             <p key={id}>{item}</p>
           ))}
         </div>
+
+        <Comments id={list._id} comments={list.comments}/>
       </div>
     );
   }

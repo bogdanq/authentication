@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import propTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 import styles from "./index.css";
+import Input from '../../atoms/Input'
+import * as actions from '../../../redux/summary/actions'
 
 class Search extends Component {
   state = {
-    style: ""
+    style: "",
+    isVisible: false,
+    value: ''
   };
 
   componentDidUpdate() {
@@ -13,15 +21,54 @@ class Search extends Component {
 
   render() {
     const { style } = this.getStyle();
+    const { isVisible, value } = this.state
+    const { search } = this.props
 
     return (
       <div style={{ background: style }} className={styles.search}>
-        <input type="text" placeholder="Search..." className={styles.input} />
-        <button className={styles.enter}>Найти</button>
+        <Input 
+          typeInput="text" 
+          placeholder="Search..." 
+          onFocus={() => this.hendleVisible(true)} 
+          className={styles.input} 
+          updateField={this.updateFields}
+          value={value}
+        />
+        <button className={styles.enter} onClick={this.getList}>Найти</button>
+        {
+          isVisible && 
+          <div className = {styles.searchArea}>
+            {
+              search.map((item, id) =>
+                <NavLink 
+                  onClick={() => this.hendleVisible(false)} 
+                  to={`/summary-user/${item._id}`} 
+                  key={id}>{item.title}
+                </NavLink>
+              )
+            }
+          </div>
+        }
       </div>
     );
   }
 
+  getList = () => {
+    const { actions } = this.props
+    this.hendleVisible(false)
+    actions.addSearch()
+  }
+
+  updateFields = ({ target }) => {
+    const { actions } = this.props
+    this.setState({ value: target.value })
+    actions.searchSummary(target.value)
+  }
+
+  hendleVisible = (bool) => {
+    this.setState({ isVisible: bool })
+  }
+  
   getStyle = () => {
     const { pathname } = window.location;
 
@@ -59,4 +106,26 @@ class Search extends Component {
   };
 }
 
-export default Search;
+Search.propTypes = {
+  actions: propTypes.object.isRequired,
+  search: propTypes.array
+}
+
+Search.defaultProps = {
+  search: []
+}
+
+const mapStateToProps = state => ({
+  search: state.summary.search
+})
+
+
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

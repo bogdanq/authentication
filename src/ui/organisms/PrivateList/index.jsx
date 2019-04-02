@@ -19,7 +19,7 @@ class PrivateList extends Component {
   }
 
   render() {
-    const { userPrivateSummary, status } = this.props;
+    const { userPrivateSummary } = this.props;
 
     return (
       <div className={styles.body}>

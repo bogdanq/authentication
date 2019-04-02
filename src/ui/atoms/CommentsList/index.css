@@ -1,0 +1,56 @@
+
+.peopleComment, .yorComments {
+  border: 1px solid #000;
+  width: 700px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  padding: 20px 20px;
+  position: relative;
+}
+
+.yorComments {
+  border: 1px solid green;
+  margin-left: 500px;
+}
+
+.clear {
+  clear: both;
+}
+
+.peopleComment a, .yorComments a {
+  font-size: 18px;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+  display: block;
+  margin-bottom: 10px;
+}
+.peopleComment a:hover, .yorComments a:hover {
+  color: rgb(190, 59, 230)
+}
+.peopleComment span, .yorComments span {
+  margin-bottom: 20px;
+  display: block;
+  color: rgb(85, 85, 85)
+}
+
+
+.peopleComment p, .yorComments p {
+  line-height: 20px;
+  font-size: 15px;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+}
+
+.delete, .deleteLoad {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  border: 1px solid green;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px
+}
+
+.deleteLoad {
+  background: red
+}
