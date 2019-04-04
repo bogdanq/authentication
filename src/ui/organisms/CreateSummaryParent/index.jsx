@@ -15,7 +15,7 @@ import * as actions from "../../../redux/summary/actions";
 
 class CreateSummaryParent extends React.Component {
   state = {
-    value: 3,
+    value: 0,
     update: false
   };
 
@@ -50,9 +50,9 @@ class CreateSummaryParent extends React.Component {
       deleteInput,
       actions,
       match,
-      status
+      status,
     } = this.props;
-    
+
     const { value, update } = this.state;
 
     const {

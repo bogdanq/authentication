@@ -1,36 +1,34 @@
-import axios from "axios";
 import * as types from "./types";
 import * as userTypes from "../user/types";
 import history from "../../helpers/history";
 import headers from "../../helpers/headers";
 import { UserEmail } from '../../helpers/headers'
+import Request from "../../helpers/Request";
 
-const BASE_PATH = "http://localhost:8080/";
 const SUMMARY = "summary";
-const baseUrl = `${BASE_PATH}${SUMMARY}`;
 
 export const getSummary = (e, count) => ({
   type: types.GET_SUMMARY,
-  promise: axios.get(`${baseUrl}?page=${e}&size=${count}`)
+  promise: Request.get(`/${SUMMARY}?page=${e}&size=${count}`)
 });
 
 export const deleteSummary = id => ({
   type: userTypes.DELETE_SUMMARY,
-  promise: axios.delete(`${baseUrl}/delete/${id}`, headers),
+  promise: Request.delete(`/${SUMMARY}/delete/${id}`, headers),
   payload: id
 });
 
 export const postSummary = summary => ({
   type: types.POST_SUMMARY,
-  promise: axios
-    .post(`${baseUrl}/add`, summary, headers)
+  promise: Request
+    .post(`/${SUMMARY}/add`, summary, headers)
     .then(res => history.goBack())
 });
 
 export const putSummary = (summary, id) => ({
   type: types.PUT_SUMMARY,
-  promise: axios
-    .put(`${baseUrl}/update/${id}`, summary, headers)
+  promise: Request
+    .put(`/${SUMMARY}/update/${id}`, summary, headers)
     .then(res => history.goBack())
 });
 
@@ -40,21 +38,21 @@ export const resetLoading = () => ({
 
 export const addComment = (comment, id) => ({
   type: types.PUT_COMMENT,
-  promise: axios
-    .put(`${baseUrl}/addComments/`, comment, UserEmail(id))
+  promise: Request
+    .put(`/${SUMMARY}/addComments/`, comment, UserEmail(id))
 })
 
 export const deleteComment = (comment, id) => ({
   type: types.DELETE_COMMENT,
-  promise: axios
-    .put(`${baseUrl}/deleteComments/`, {_id: comment}, UserEmail(id)),
+  promise: Request
+    .put(`/${SUMMARY}/deleteComments/`, {_id: comment}, UserEmail(id)),
   payload: comment
 })
 
 export const searchSummary = (title) => ({
   type: types.SEARCH_SUMMARY,
-  promise: axios
-    .get(`${baseUrl}?title=${title}`)
+  promise: Request
+    .get(`/${SUMMARY}?title=${title}`)
 })
 
 export const addSearch = () => ({
@@ -63,7 +61,7 @@ export const addSearch = () => ({
 
 export const getSummaryById = id => ({
   type: types.GET_SUMMARY_BY_ID,
-  promise: axios.get(`${baseUrl}/getByEmail/${id}`)
+  promise: Request.get(`/${SUMMARY}/getByEmail/${id}`)
 });
 
 export const getCountElements = count => ({

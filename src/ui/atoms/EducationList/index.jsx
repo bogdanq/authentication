@@ -1,46 +1,35 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+import DatePicker, { registerLocale } from "react-datepicker";
+import ru from 'date-fns/locale/ru';
 
 import styles from "./index.css";
 import Input from "../../atoms/Input";
+import './data.css';
 
 class EducationList extends Component {
   render() {
     const { createList, change, index } = this.props;
-
-    const List = [
-      {
-        text: "Укажите название образовательного учреждения",
-        typeInput: "text",
-        value: createList.institution,
-        className: styles.input,
-        placeholder: "учебное заведение",
-        updateField: e =>
-          change(["education", index, "institution"], e.target.value)
-      },
-      {
-        text: "Укажите ключевые навыки",
-        typeInput: "text",
-        value: createList.year,
-        placeholder: "год завершения",
-        className: styles.year,
-        updateField: e => change(["education", index, "year"], e.target.value)
-      }
-    ];
+    registerLocale('ru', ru);
 
     return (
       <div className={styles.education}>
-        {List.map((item, id) => (
-          <Input
-            key={id}
-            text={item.text}
-            className={item.className}
-            typeInput={item.typeInput}
-            value={item.value}
-            placeholder={item.placeholder}
-            updateField={item.updateField}
-          />
-        ))}
+        <Input
+          className={styles.input}
+          typeInput="text"
+          value={createList.institution}
+          placeholder="учебное заведение"
+          updateField={e =>
+            change(["education", index, "institution"], e.target.value)}
+        />
+
+        <DatePicker
+          selected={createList.year ? new Date(createList.year) : new Date()}
+          onChange={e => change(["education", index, "year"], new Date(e))}
+          dateFormat="d MMM yyyy"
+          locale = 'ru'
+          className={styles.inputDate}
+        />
       </div>
     );
   }

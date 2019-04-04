@@ -56,3 +56,15 @@
   line-height: 0;
   font-size: 20px;
 }
+.inputDate {
+  height: 40px;
+  width: 100px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 111, 111);
+  font-size: 14px;
+  padding: 0 10px;
+  font-family: 'Open sans', sans-serif;
+  transition: all .5s;
+  margin-top: 15px;
+}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-
 import components from "../../atoms";
 import ActionPanel from "../../organisms/ActionPanel";
 import styles from "./index.css";

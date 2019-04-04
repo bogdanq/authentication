@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 
 import styles from "./index.css";
-import Input from "../../atoms/Input";
+import Input from "../Input";
+import Downshift from "../Downshift";
+
+const list = ["A1 начальный", "А2 элементарный", "В1 средний", "В2 средне-продвинутый", "С1 продвинутый", "С2 в совершенстве"]
 
 class LanguageList extends Component {
   render() {
@@ -10,8 +13,6 @@ class LanguageList extends Component {
 
     return (
       <div className={styles.education}>
-        <h1>Укажите языки, которыми владеете</h1>
-
         <Input
           typeInput="text"
           className={styles.input}
@@ -22,15 +23,11 @@ class LanguageList extends Component {
           }
         />
 
-        <p>Укажите уровень владения языком</p>
-        <Input
-          typeInput="text"
-          className={styles.input}
-          value={createList.description}
-          placeholder="уровень"
-          updateField={e =>
-            change(["language", index, "description"], e.target.value)
-          }
+        <Downshift 
+          update={(e) => change(["language", index, "description"], e.target.innerText)} 
+          value={createList.description} 
+          list={list}
+          defaultValue='Уровень владения языком'
         />
       </div>
     );

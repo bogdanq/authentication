@@ -10,6 +10,8 @@ class Language extends Component {
 
     return (
       <div className={styles.education}>
+        <h1>Укажите языки, которыми владеете</h1>
+        
         {createList.map((item, id) => (
           <LanguageList key={id} index={id} createList={item} change={change} />
         ))}

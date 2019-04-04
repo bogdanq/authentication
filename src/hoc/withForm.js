@@ -14,11 +14,11 @@ function withForm(BaseComponent) {
           companyName: "",
           title: "",
           description: "",
-          startDate: new Date(),
-          endDate: new Date()
+          startDate: '',
+          endDate: ''
         }
       ],
-      education: [{ institution: "", year: "" }],
+      education: [{ institution: "", year: ''}],
       language: [{ title: "", description: "" }],
       load: false,
       list: []
@@ -41,7 +41,6 @@ function withForm(BaseComponent) {
 
     render() {
       const { load } = this.state;
-
       return load ? (
         <Loader />
       ) : (
@@ -63,9 +62,8 @@ function withForm(BaseComponent) {
     };
 
     addInput = name => {
-      let obj = {};
       this.setState({
-        [name]: [...this.state[name], obj]
+        [name]: [...this.state[name], {}]
       });
     };
 

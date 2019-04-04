@@ -28,7 +28,7 @@ class Home extends Component {
     const { loadSummary, summarysList, pagination, countElements } = this.props;
     const current_page = pagination.page
     const pages = pagination.pages
-    console.log(typeof countElements)
+
     return (
       <Fragment>
         <Preview color="#83b0b9" title="Просмотр резюме" description='Мы найдем вам резюме на любой вкус по всей стране' />

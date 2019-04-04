@@ -9,6 +9,7 @@ class Education extends Component {
 
     return (
       <div className={styles.education}>
+        <h1>Укажите название образовательного учреждения</h1>
         {createList.map((item, id) => (
           <EducationList
             key={id}

@@ -20,9 +20,9 @@ const equality = fields => {
   let a = false;
   if (typeof fields === "object") {
     fields.map(item => {
-      if (Object.keys(item).length > 1) {
+      if (Object.keys(item).length > 0) {
         for (let key in item) {
-          Object.keys(item[key]).length < 1 ? (a = true) : (a = false);
+          Object.keys(String(item[key]).length) < 1 ? (a = false) : (a = false)
         }
       } else {
         a = true;

@@ -10,6 +10,7 @@ class Historys extends Component {
     
     return (
       <Fragment>
+        <h1>Краткое описание прошлого места работы</h1>
         {createList.map((item, id) => (
           <HistoryList key={id} index={id} createList={item} change={change} />
         ))}
