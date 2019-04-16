@@ -14,7 +14,8 @@
   outline: none;
   padding-left: 50px;
   font-size: 25px;
-  color: #fff
+  color: #fff;
+  font-family: Comic Sans MS, Helvetica, sans-serif
 }
 .input::placeholder {
   color: #fff
@@ -29,7 +30,8 @@
   font-size: 25px;
   color: #fff;
   cursor: pointer;
-  padding: 0 15px
+  padding: 0 15px;
+  font-family: Comic Sans MS, Helvetica, sans-serif
 }
 
 .searchArea {
@@ -37,10 +39,11 @@
   padding-bottom: 0px;
   background: #fff;
   margin: 0 auto;
-  transform: translate(-50px, -10px);
+  transform: translate(-55px, -14px);
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
-  text-align: left
+  text-align: left;
+  overflow: hidden;
 }
 
 .searchArea a {
@@ -50,10 +53,10 @@
   padding-left: 30px;
   color: #000;
   font-size: 20px;
-  font-family: 'Arial', sans-serif;
+  font-family: Comic Sans MS, Helvetica, sans-serif
 }
 
 
 .searchArea a:hover {
-  background: red
+  background: rgb(221, 220, 220);
 }

@@ -20,7 +20,7 @@ class Comments extends Component {
     const { comments, user, id, actions, status } = this.props
 
     const data = {
-      userName: user.firstName + user.lastName,
+      userName: user.firstName,
       userEmail: user.email,
       description
     }
@@ -54,11 +54,15 @@ class Comments extends Component {
 Comments.propTypes = {
   actions: propTypes.object,
   user: propTypes.object,
+  comments: propTypes.array, 
+  id: propTypes.string
   // status: propTypes.number
 };
 Comments.defaultProps = {
   actions: {},
   user: {},
+  comments: [], 
+  id: 0
   // status: null
 };
 

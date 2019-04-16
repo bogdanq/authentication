@@ -1,7 +1,7 @@
 
 .peopleComment, .yorComments {
   border: 1px solid #000;
-  width: 700px;
+  width: 400px;
   border-radius: 20px;
   margin-bottom: 50px;
   padding: 20px 20px;
@@ -9,8 +9,9 @@
 }
 
 .yorComments {
-  border: 1px solid green;
+  border: 1px solid #e7e7e7;
   margin-left: 500px;
+  background: rgba(0, 128, 0, 0.123)
 }
 
 .clear {
@@ -30,7 +31,7 @@
 .peopleComment span, .yorComments span {
   margin-bottom: 20px;
   display: block;
-  color: rgb(85, 85, 85)
+  color: #c00
 }
 
 
@@ -45,10 +46,16 @@
   position: absolute;
   top: 0;
   right: 30px;
-  border: 1px solid green;
-  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border: 1px solid #fff;
+  height: 40px;
   cursor: pointer;
-  font-size: 14px
+  color: #609fcf;
+  padding: 0 20px;
+  line-height: 40px;
 }
 
 .deleteLoad {

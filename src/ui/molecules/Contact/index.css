@@ -54,3 +54,56 @@
 } 
 .btn:hover { background: rgb(232,95,76); }
 .btn:active { background: rgb(152,15,0); }
+
+.dropMenu {
+  height: 40px;
+  width: calc(100% - 10px);
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(112, 111, 111);
+  font-size: 15px;
+  padding-left: 10px;
+  font-family: 'Open sans', sans-serif;
+  transition: all .5s;
+}
+
+.listTags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 60px;
+  width: 70%;
+}
+
+.listTags p {
+  background-color: rgba(203,209,211,.3);
+  color: #666;
+  position: relative;
+  height: 30px;
+  line-height: 28px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  margin-right: 20px;
+  padding: 0 11px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.listTags p:hover  {
+  color: #fff;
+  background-color: #fff;
+  border: 1px solid red
+}
+.listTags p:hover:after {
+  opacity: 1;
+}
+
+.listTags p:after {
+  position: absolute;
+  content: 'X';
+  font-size: 20px;
+  color: red;
+  right: 50%;
+  transform: translateX(50%);
+  opacity: 0;
+}

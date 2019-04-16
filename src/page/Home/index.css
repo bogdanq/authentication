@@ -3,7 +3,7 @@
   border: none;
   background: none;
   outline: none;
-  border: 1px solid rgb(131, 176, 185);
+  /* border: 1px solid rgb(131, 176, 185); */
   height: 40px;
   width: 50px;
   cursor: pointer;
@@ -16,7 +16,7 @@
 }
 
 .ative {
-  background: #83b0b9;
+  border: 1px solid rgb(131, 176, 185);
 }
 
 .disabled {
@@ -24,11 +24,11 @@
 }
 
 .ative a {
-  color: #fff
+  color: #000
 }
 
 .summary {
-  width: 100%
+  width: 70%
 }
 
 .summary h1 {
@@ -44,4 +44,15 @@
   display: flex;
   justify-content: center;
   padding: 50px 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.wrapper h1 {
+  font-family: Comic Sans MS, Helvetica, sans-serif
+}
+.filters {
+  width: 30%;
 }

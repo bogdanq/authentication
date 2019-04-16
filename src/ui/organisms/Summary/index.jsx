@@ -21,6 +21,7 @@ class Summary extends Component {
         <h2>{list.title}</h2>
         <h3>{momentJs(list.createdAt)}</h3>
         <p>{list.description}</p>
+        <h3>Способ связи {list.userEmail}@mail.ru</h3>
         <NavLink to={`/summary-user/${list._id}`} className={styles.moreBtn}>
           Смотреть
         </NavLink>

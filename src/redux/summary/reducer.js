@@ -90,12 +90,20 @@ export default function reducer(state = initialState, action) {
 
     case types.PUT_SUMMARY:
       return {
-        ...state
+        ...state,
+        status: true
       };
 
     case types.PUT_SUMMARY_SUCCESS:
       return {
-        ...state
+        ...state,
+        status: false
+      };
+
+    case types.PUT_SUMMARY_ERROR:
+      return {
+        ...state,
+        status: false
       };
 
       

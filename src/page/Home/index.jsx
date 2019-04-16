@@ -36,13 +36,18 @@ class Home extends Component {
           <Skelet />
         ) : (
           <Fragment>
-            <div className={styles.filter} />
-            <div id="content" className={styles.summary}>
-              <h1>Показывать по:</h1>
-              <Select count={countElements} onHandlerSelect={(e) => this.handleChange(e)}/>
-            {summarysList.map((item, id) => (
-                <Summary key={id} list={item} email={undefined} />
-              ))}
+            <div className={styles.wrapper}>
+              <div id="content" className={styles.summary}>
+                <h1>Показывать по:</h1>
+                <Select count={countElements} onHandlerSelect={(e) => this.handleChange(e)}/>
+                {summarysList.map((item, id) => (
+                  <Summary key={id} list={item} email={undefined} />
+                ))}
+              </div>
+
+                <div className={styles.filters}>
+                  <h1>Фильтры</h1>
+                </div>
             </div>
             
           </Fragment>

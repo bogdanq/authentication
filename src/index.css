@@ -1,6 +1,7 @@
 .App {
   width: 100%;
   margin: 0 auto;
+  font-family: Comic Sans MS, Helvetica, sans-serif !important
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:500');
@@ -8,10 +9,11 @@
 
 .wrapper {
   display: flex;
+  font-family: Comic Sans MS, Helvetica, sans-serif !important
 }
 
 .body {
   width: 100%;
   margin-left: 120px;
-  font-family: Arial, Helvetica, sans-serif !important
+  font-family: Comic Sans MS, Helvetica, sans-serif !important
 }

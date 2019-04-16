@@ -1,6 +1,7 @@
 .body {
   width: 70%;
-  margin: 0 auto
+  margin: 0 auto;
+  font-family: Comic Sans MS, Helvetica, sans-serif;
 }
 
 .bodyH1 {
@@ -8,7 +9,8 @@
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  margin: 50px 0
+  margin: 50px 0;
+  color: #c00
 }
 
 .phone {
@@ -29,6 +31,7 @@
   font-weight: bold;
   margin: 10px 0 15px 0;
   margin-top: 40px;
+  color: #c00
 }
 
 .editBtn  {

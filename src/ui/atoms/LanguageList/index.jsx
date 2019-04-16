@@ -24,10 +24,11 @@ class LanguageList extends Component {
         />
 
         <Downshift 
-          update={(e) => change(["language", index, "description"], e.target.innerText)} 
+          changeOptions={(e) => change(["language", index, "description"], e.target.innerText)} 
           value={createList.description} 
           list={list}
           defaultValue='Уровень владения языком'
+          style={styles.dropMenu}
         />
       </div>
     );

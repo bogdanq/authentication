@@ -8,7 +8,7 @@ function withForm(BaseComponent) {
       title: "",
       description: "",
       phone: "",
-      tags: "",
+      tags: [],
       history: [
         {
           companyName: "",
@@ -49,9 +49,23 @@ function withForm(BaseComponent) {
           updateFields={this.updateFields}
           addInput={this.addInput}
           deleteInput={this.deleteInput}
+          updateTags={this.updateTags}
+          deleteTags={this.deleteTags}
           {...this.props}
         />
       );
+    }
+
+    updateTags = (item) => {
+      this.setState({
+        tags: [...this.state.tags, item]
+      });
+    }
+
+    deleteTags = (value) => {
+      this.setState({
+        tags: [...this.state.tags.filter(item => item !== value)],
+      })
     }
 
     updateFields = (path, value) => {

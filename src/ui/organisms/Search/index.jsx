@@ -8,6 +8,8 @@ import styles from "./index.css";
 import Input from '../../atoms/Input'
 import * as actions from '../../../redux/summary/actions'
 
+import onClickOutside from "react-onclickoutside";
+
 class Search extends Component {
   state = {
     style: "",
@@ -36,7 +38,7 @@ class Search extends Component {
         />
         <button className={styles.enter} onClick={this.getList}>Найти</button>
         {
-          isVisible && 
+          isVisible && value.length > 0 &&
           <div className = {styles.searchArea}>
             {
               search.map((item, id) =>
@@ -53,6 +55,10 @@ class Search extends Component {
     );
   }
 
+  handleClickOutside = () => {
+    this.setState({ isVisible: false })
+  };
+  
   getList = () => {
     const { actions } = this.props
     this.hendleVisible(false)
@@ -119,8 +125,6 @@ const mapStateToProps = state => ({
   search: state.summary.search
 })
 
-
-
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
 })
@@ -128,4 +132,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Search);
+)(onClickOutside(Search));

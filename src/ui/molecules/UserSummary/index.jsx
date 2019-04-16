@@ -76,7 +76,7 @@ class UserSummary extends Component {
           )}
         </h1>
         <div className={styles.tags}>
-          {list.tags.split(",").map((item, id) => (
+          {list.tags.map((item, id) => (
             <p key={id}>{item}</p>
           ))}
         </div>

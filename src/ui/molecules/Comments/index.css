@@ -14,12 +14,13 @@
 
 .commentH1 {
   font-size: 30px;
-  font-family: 'Arial', 'Arial', sans-serif;
+  font-family: Comic Sans MS, Helvetica, sans-serif;
   padding-left: 0;
   padding-right: 0;
   line-height: 2;
   border-bottom: 1px dotted #000;
   width: 190px;
+  
 }
 .btn, .btnLoad {
   position: absolute;

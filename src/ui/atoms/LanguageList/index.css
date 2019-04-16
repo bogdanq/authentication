@@ -56,3 +56,17 @@
   line-height: 0;
   font-size: 20px;
 }
+
+.dropMenu {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border: 1px solid rgb(112, 111, 111);
+  background: transparent;
+  padding: 15px 10px;
+  border-radius: 5px;
+  padding-right: 40px;
+  cursor: pointer;
+  z-index: 1;
+}

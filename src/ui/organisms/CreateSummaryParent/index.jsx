@@ -6,6 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import SwipeableViews from "react-swipeable-views";
 import propTypes from "prop-types";
 import TabContainer from "../../atoms/TabContainer";
+import Button from "../../atoms/Button";
 import molecules from "../../molecules";
 import styles from "./index.css";
 
@@ -51,9 +52,12 @@ class CreateSummaryParent extends React.Component {
       actions,
       match,
       status,
+      updateTags,
+      deleteTags
     } = this.props;
 
     const { value, update } = this.state;
+    console.log('status', status)
 
     const {
       DescriptionSummary,
@@ -65,6 +69,39 @@ class CreateSummaryParent extends React.Component {
 
     return (
       <div>
+        {!update ? (
+          <div>
+            {value > 0 && (
+              <Button 
+                style={styles.btn} 
+                change={this.handleChangePrev}
+                text='Назад'
+              />
+            )}
+            {value < 4 && (
+              <Button
+                style={styles.btn}
+                change={this.handleChangeNext}
+                disabled={validate(value, summary)}
+                text='Далее'
+              />
+            )}
+            {value === 4 && (
+              <Button
+                style={status ? styles.loadBtn : styles.saveBtn}
+                change={() => actions.postSummary(summary)}
+                text='Cохранить'
+              />
+            )}
+          </div>
+        ) : (
+          <Button
+            style={status ? styles.loadBtn : styles.saveBtn}
+            change={() => actions.putSummary(summary, match.params.id)}
+            text='Cохранить'
+          />
+        )}
+
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
@@ -110,42 +147,11 @@ class CreateSummaryParent extends React.Component {
               change={updateFields}
               phone={summary.phone}
               tags={summary.tags}
+              updateTags={updateTags}
+              deleteTags={deleteTags}
             />
           </TabContainer>
         </SwipeableViews>
-        {!update ? (
-          <div>
-            {value > 0 && (
-              <button className={styles.btn} onClick={this.handleChangePrev}>
-                назад
-              </button>
-            )}
-            {value < 4 && (
-              <button
-                className={styles.btn}
-                onClick={this.handleChangeNext}
-                disabled={validate(value, summary)}
-              >
-                далее
-              </button>
-            )}
-            {value === 4 && (
-              <button
-                className={status ? styles.loadBtn : styles.saveBtn}
-                onClick={() => actions.postSummary(summary)}
-              >
-                Cохранить
-              </button>
-            )}
-          </div>
-        ) : (
-          <button
-            className={styles.btn}
-            onClick={() => actions.putSummary(summary, match.params.id)}
-          >
-            save
-          </button>
-        )}
       </div>
     );
   }

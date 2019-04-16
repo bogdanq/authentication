@@ -1,25 +1,32 @@
 .btn, .saveBtn {
-  color: #fff; 
-  text-decoration: none;
-  user-select: none; 
-  background: rgb(212,75,56); 
-  padding: .7em 1.5em; 
-  outline: none; 
-  border: none;
+  text-align: center;
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border: 1px solid #609fcf;
+  height: 40px;
   cursor: pointer;
-  margin-right: 20px;
+  color: #609fcf;
+  padding: 0 20px;
+  line-height: 40px;
+  margin-right: 50px;
+  margin-bottom: 50px;
 } 
-.btn:hover, saveBtn:hover { background: rgb(232,95,76); }
-.btn:active { background: rgb(152,15,0); }
+.btn:hover, .saveBtn:hover {  border: 1px solid #efefef; }
 
 .loadBtn {
-  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  background: none;
   outline: none;
-  border: none;
-  display: inline-block;
-  padding: .7em 1.5em; 
-  overflow: hidden;
-  background: rgba(255,255,255,1);
+  border: 1px solid #609fcf;
+  height: 40px;
+  cursor: pointer;
+  color: #609fcf;
+  padding: 0 20px;
+  line-height: 40px;
+  margin-right: 50px;
+  margin-bottom: 50px;
   transition: color .3s, background .5s;
   animation: stripes .75s infinite;
   background: linear-gradient(45deg, rgb(152,15,0) 25%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 50%, rgb(152,15,0) 50%,      rgb(152,15,0) 75%, rgba(255,255,255,1) 75%, rgba(255,255,255,1));
