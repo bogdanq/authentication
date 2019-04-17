@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
+import InputMask from 'react-input-mask';
 
-import Input from "../../atoms/Input";
 import Downshift from "../../atoms/Downshift";
 import dropDown from "../../../hoc/dropDown";
 import styles from "./index.css";
@@ -39,14 +39,15 @@ class Contact extends Component {
     return (
       <div className={styles.education}>
         {List.map((item, id) => (
-          <Input
+          <InputMask
+            mask="+7 999 999 99 99"
             key={id}
             text={item.text}
             className={styles.input}
             typeInput={item.typeInput}
             value={item.value}
             placeholder={item.placeholder}
-            updateField={item.updateField}
+            onChange={item.updateField}
           />
         ))}
 

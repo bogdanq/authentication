@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -19,23 +19,23 @@ class Comments extends Component {
     const { description } = this.state
     const { comments, user, id, actions, status } = this.props
 
-    const data = {
-      userName: user.firstName,
-      userEmail: user.email,
-      description
-    }
     return(
      <div className={styles.comment}>
         <h1 className={styles.commentH1}>Комментарии</h1>
-        <Input 
-          className={styles.addInput} 
-          typeInput='textarea'
-          placeholder='Напишите ваш комментарий'
-          value={description}
-          updateField={this.updateField}
-        />
+        {
+          user.firstName &&
+          <Fragment>
+            <Input 
+              className={styles.addInput} 
+              typeInput='textarea'
+              placeholder='Напишите ваш комментарий'
+              value={description}
+              updateField={this.updateField}
+            />
 
-        <Button text='отправить' style={styles.btn} change={() => actions.addComment(data, id)}/>
+            <Button text='отправить' style={styles.btn} change={() => this.handleClick()}/>
+          </Fragment>
+        }
 
         {
           comments.map((item, key) =>
@@ -44,6 +44,24 @@ class Comments extends Component {
         }
      </div>
     )
+  }
+
+  handleClick = () => {
+    const {actions, id, user} = this.props
+    const wrapper = document.querySelector('#root') 
+
+    const data = {
+      userName: user.firstName,
+      userEmail: user.email,
+      description: this.state.description
+    }
+
+    this.setState({ description: '' })
+    actions.addComment(data, id)
+
+    window.scrollTo({
+      top: wrapper.clientHeight
+    })
   }
 
   updateField = ({ target }) => {
@@ -56,14 +74,12 @@ Comments.propTypes = {
   user: propTypes.object,
   comments: propTypes.array, 
   id: propTypes.string
-  // status: propTypes.number
 };
 Comments.defaultProps = {
   actions: {},
   user: {},
   comments: [], 
   id: 0
-  // status: null
 };
 
 const mapStateToProps = state => ({

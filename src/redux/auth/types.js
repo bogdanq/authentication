@@ -7,6 +7,7 @@ export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
 export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
 
 export const LOG_OUT = "LOG_OUT";
+export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 
 export const GET_USER = "GET_USER";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";

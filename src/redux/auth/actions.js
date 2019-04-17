@@ -3,6 +3,7 @@ import cookies from "browser-cookies";
 import * as types from "./types";
 import headers from "../../helpers/headers";
 import { UserEmail } from "../../helpers/headers";
+import history from "../../helpers/history";
 import Request from "../../helpers/Request";
 
 const USERS = 'users'
@@ -26,8 +27,10 @@ export const signIn = (email, password) => ({
 });
 
 export const logOut = () => {
-  cookies.erase("token");
-};
+  history.push('/')
+  cookies.erase("token")
+
+}
 
 export const getUser = () => ({
   type: types.GET_USER,

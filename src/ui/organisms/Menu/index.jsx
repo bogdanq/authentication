@@ -1,68 +1,108 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 
-import molecules from "../../molecules";
 import Loadash from "../../../helpers/Loadash";
-
+import propTypes from "prop-types";
 import styles from "./index.css";
+
+import * as actions from "../../../redux/auth/actions";
 
 class Menu extends Component {
   render() {
-    const { ProfileSetting } = molecules;
-    const { user } = this.props;
+    const { user, actions } = this.props;
+    const logUser = [
+      {
+       path: '/',
+       text: 'Резюме',
+       style: styles.menuLink,
+       onClick: this.handleClick
+      },
+      {
+        path: '/vacanci',
+        text: 'Вакансии',
+        style: styles.menuLink,
+        onClick: this.handleClick
+       },
+       {
+        path: '/private',
+        text: 'Личный кабинет',
+        style: styles.menuLink,
+        onClick: this.handleClick
+       },
+       {
+        path: '/',
+        text: 'Выйти',
+        style: styles.menuLink,
+        onClick: actions.logOut
+       }
+    ]
+
+    const anonUser = [
+      {
+       path: '/',
+       text: 'Резюме',
+       style: styles.menuLink,
+       onClick: this.handleClick
+      },
+      {
+        path: '/vacanci',
+        text: 'Вакансии',
+        style: styles.menuLink,
+        onClick: this.handleClick
+       },
+       {
+        path: '/signup',
+        text: 'Регистрация',
+        style: styles.menuLink,
+        onClick: this.handleClick
+       },
+       {
+        path: '/signin',
+        text: 'Войти',
+        style: styles.menuLink,
+        onClick: this.handleClick
+       },
+    ]
 
     return (
       <div className={styles.header}>
         <ul className={styles.menu}>
-          <NavLink
-            to="/"
-            activeClassName={styles.active1}
-            className={styles.menuLink}
-            exact
-          >
-            Резюме
-          </NavLink>
-          <NavLink
-            to="/vacanci"
-            activeClassName={styles.active2}
-            className={styles.menuLink}
-            exact
-          >
-            Вакансии
-          </NavLink>
-          {!Loadash(user) ? (
-            <Fragment>
-              <NavLink
-                to="/private"
-                activeClassName={styles.active5}
-                className={styles.menuLink}
-              >
-                Личный кабинет
-              </NavLink>
-              <ProfileSetting user={user} />
-            </Fragment>
-          ) : (
-            <Fragment>
-              <NavLink
-                to="/signin"
-                activeClassName={styles.active3}
-                className={styles.menuLink}
-              >
-                Войти
-              </NavLink>
-              <NavLink
-                to="/signup"
-                activeClassName={styles.active6}
-                className={styles.menuLink}
-              >
-                Регистрация
-              </NavLink>
-            </Fragment>
-          )}
+          {
+            !Loadash(user) 
+            ? logUser.map((item, id) => <NavLink to={item.path} key={id} className={item.style} onClick={item.onClick}>{item.text}</NavLink>)
+            : anonUser.map((item, id) => <NavLink to={item.path} key={id} className={item.style} onClick={item.onClick}>{item.text}</NavLink> )
+          }
+          
         </ul>
       </div>
     );
   }
+  handleClick = (e) => {
+    window.scrollTo({
+      top: 0
+    })
+  }
 }
 
-export default Menu;
+Menu.propTypes = {
+  actions: propTypes.object.isRequired,
+  user: propTypes.object
+};
+
+Menu.defaultProps = {
+  user: {},
+  actions: propTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Menu);
